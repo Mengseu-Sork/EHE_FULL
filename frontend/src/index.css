@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, sans-serif;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    width: max-content;
+    animation: marquee 25s linear infinite;
+}
+
+
+@media (max-width: 768px) {
+    .history-swiper .swiper-button-prev,
+    .history-swiper .swiper-button-next {
+        display: none;
+    }
+}
