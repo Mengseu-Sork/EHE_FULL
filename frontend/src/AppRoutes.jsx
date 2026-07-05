@@ -13,6 +13,8 @@ import Donate from "./website/pages/Donate";
 import AdminLayout from "./admin/layouts/AdminLayout";
 import Login from "./admin/pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
+import History from "./admin/pages/History";
+import Supporter from "./admin/pages/Supporter";
 
 export default function AppRoutes() {
     const location = useLocation();
@@ -36,6 +38,8 @@ export default function AppRoutes() {
             {/* Admin */}
             <Route path="/admin" element={<AdminLayout />}>
                 <Route path="dashboard" element={<Dashboard />} />
+                <Route path="history" element={<History />} />
+                <Route path="supporters" element={<Supporter />} />
             </Route>
             
         </Routes>

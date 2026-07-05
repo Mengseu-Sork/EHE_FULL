@@ -3,8 +3,10 @@ import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import {
     Bars3Icon,
     HomeIcon,
+    ClockIcon,
     FolderIcon,
     NewspaperIcon,
+    UserGroupIcon,
     RectangleGroupIcon,
     ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
@@ -29,19 +31,24 @@ export default function AdminLayout() {
             icon: HomeIcon,
         },
         {
+            name: "History",
+            path: "/admin/history",
+            icon: ClockIcon,
+        },
+        {
             name: "Projects",
             path: "/admin/projects",
             icon: FolderIcon,
         },
         {
-            name: "Programs",
-            path: "/admin/programs",
-            icon: RectangleGroupIcon,
-        },
-        {
             name: "News",
             path: "/admin/news",
             icon: NewspaperIcon,
+        },
+        {
+            name: "Supporters",
+            path: "/admin/supporters",
+            icon: UserGroupIcon,
         },
     ];
 
@@ -50,21 +57,28 @@ export default function AdminLayout() {
 
             {/* Sidebar */}
             <aside
-                className={`bg-green-900 text-white flex flex-col transition-all duration-300 ${sidebarOpen ? "w-56" : "w-20"
+                className={`bg-green-900 text-white flex flex-col transition-all duration-300 ${sidebarOpen ? "w-64" : "w-20"
                     }`}
             >
                 {/* Logo */}
                 <div className="flex h-24 items-center justify-between border-b border-white/10 px-4">
 
-                    <div>
+                    <div className="flex items-center gap-3 ml-7">
+
                         {sidebarOpen && (
-                            <>
-                                <img
-                                    src={logo}
-                                    alt="EHE Logo"
-                                    className="h-16 w-16 flex-shrink-0 rounded-lg bg-white p-1 object-contain"
-                                />
-                            </>
+
+                            <div>
+
+                                <h1 className="text-xl font-bold text-white">
+                                    EHE Admin
+                                </h1>
+
+                                <p className="text-xs text-green-200">
+                                    Administration Panel
+                                </p>
+
+                            </div>
+
                         )}
 
                     </div>
@@ -138,7 +152,7 @@ export default function AdminLayout() {
             <div className="flex flex-1">
 
                 {/* Content */}
-                <main className="flex-1 overflow-auto p-8">
+                <main className="flex-1 overflow-auto p-6">
                     <Outlet />
                 </main>
 

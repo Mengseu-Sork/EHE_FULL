@@ -16,8 +16,8 @@ import { NavLink } from "react-router-dom";
 const menus = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
-    { name: "Our Work", path: "/programs" },
-    { name: "Get Involved", path: "/projects" },
+    { name: "Our Programs", path: "/programs" },
+    { name: "Our Projects", path: "/projects" },
     { name: "News & Events", path: "/news" },
     { name: "Contact", path: "/contact" },
 ];

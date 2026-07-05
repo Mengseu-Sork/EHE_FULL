@@ -17,40 +17,9 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const partners = [
-    {
-        name: "The NGO Forum on Cambodia",
-        logo: ngoForumLogo,
-    },
-    {
-        name: "UNDP",
-        logo: undpLogo,
-    },
-    {
-        name: "UNICEF",
-        logo: unicefLogo,
-    },
-    {
-        name: "Ministry of Health",
-        logo: ministryLogo,
-    },
-    {
-        name: "The NGO Forum on Cambodia",
-        logo: ngoForumLogo,
-    },
-    {
-        name: "UNDP",
-        logo: undpLogo,
-    },
-    {
-        name: "UNICEF",
-        logo: unicefLogo,
-    },
-    {
-        name: "Ministry of Health",
-        logo: ministryLogo,
-    },
-];
+import { useEffect, useState } from "react";
+import api from "../../api/api";
+
 
 export default function About() {
 
@@ -73,29 +42,44 @@ export default function About() {
         }
     ];
 
-    const history = [
-        {
-            year: "2007",
-            image: setion,
-            description: "EHE was officially established and registered as a local non-governmental organization with the Ministry of Interior on March 1, 2007. EHE quickly began working directly with local representatives heavily affected by land concessions and environmental degradation to defend their resource rights."
-        },
-        {
-            year: "2012",
-            image: icon1,
-            description: "Deepened collaboration with grassroots groups to design and execute community advocacy strategies. EHE focused intensely on capacity-building to help affected communities organize, form networks, and systematically reclaim and protect local natural resources."
-        },
-        {
-            year: "2017",
-            image: icon2,
-            description: "Broadened organizational scope to foster holistic community development. EHE stepped up efforts to support vulnerable households by promoting women's local leadership, community-led education, hygiene and health improvements, and stronger local grassroots governance."
-        },
-        {
-            year: "2023",
-            image: icon3,
-            description: "Cemented key alliance building, expanding long-term engagement with the Prey Lang Community Network and other civil society groups. EHE continues to unify local and national networks to strengthen civil society voices and scale sustainable community development initiatives."
-        }
-    ];
+    const [history, setHistory] = useState([]);
 
+    const [loading, setLoading] = useState(true);
+
+    const enableNavigation = history.length > 1;
+    const enableLoop = history.length > 3;
+
+    useEffect(() => {
+
+        const fetchHistory = async () => {
+            try {
+                const { data } = await api.get("/histories");
+
+                setHistory(data);
+            } catch (error) {
+                console.error("Error loading history:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchHistory();
+    }, []);
+
+    const [partners, setPartners] = useState([]);
+
+    useEffect(() => {
+        loadPartners();
+    }, []);
+
+    const loadPartners = async () => {
+        try {
+            const res = await api.get("/supporters");
+            setPartners(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <div>
@@ -252,7 +236,7 @@ export default function About() {
 
                                     <div className="w-12 h-1 mt-6 rounded-full bg-green-700" />
 
-                                    <h3 className="mt-6 text-[16px] md:text-xl font-semibold text-green-950">
+                                    <h3 className="mt-6 text-base md:text-lg font-semibold text-green-950">
                                         {item.title}
                                     </h3>
 
@@ -268,6 +252,7 @@ export default function About() {
                 </div>
             </section>
 
+            {/* History */}
             <section className="py-8 md:py-16 bg-slate-50 overflow-hidden">
 
                 <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-16">
@@ -298,14 +283,19 @@ export default function About() {
 
                         <Swiper
                             modules={[Navigation, Autoplay]}
-                            navigation
-                            autoplay={{
-                                delay: 4000,
-                                disableOnInteraction: false,
-                            }}
-                            loop={true}
+                            navigation={enableNavigation}
+                            loop={enableLoop}
                             speed={800}
                             spaceBetween={30}
+                            autoplay={
+                                enableLoop
+                                    ? {
+                                        delay: 4000,
+                                        disableOnInteraction: false,
+                                        pauseOnMouseEnter: true,
+                                    }
+                                    : false
+                            }
                             breakpoints={{
                                 320: {
                                     slidesPerView: 1,
@@ -319,8 +309,8 @@ export default function About() {
                             }}
                             className="history-swiper"
                         >
-                            {history.map((item, index) => (
-                                <SwiperSlide key={index}>
+                            {history.map((item) => (
+                                <SwiperSlide key={item.id}>
 
                                     <div className="relative text-center pb-8">
 
@@ -405,7 +395,7 @@ export default function About() {
             </section>
 
             {/* Partners */}
-            <section className="py-16 bg-gradient-to-b from-white to-green-50 relative overflow-hidden">
+            <section className="py-8 md:py-16 bg-gradient-to-b from-white to-green-50 relative overflow-hidden">
                 {/* Background decoration */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-green-100 rounded-full blur-3xl opacity-50" />
                 <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-100 rounded-full blur-3xl opacity-50" />
@@ -429,18 +419,41 @@ export default function About() {
 
                     {/* Partner Cards */}
                     <div className="relative overflow-hidden mt-8 md:mt-16">
-                        <div className="flex animate-marquee gap-6 md:gap-10">
+                        <div className="flex animate-marquee gap-6 md:gap-8">
                             {[...partners, ...partners].map((partner, index) => (
                                 <div
-                                    key={index}
-                                    className="flex-shrink-0 flex items-center justify-center"
+                                    key={`${partner.id}-${index}`}
+                                    className="flex flex-shrink-0 items-center justify-center"
                                 >
-                                    <img
-                                        src={partner.logo}
-                                        alt={partner.name}
-                                        className="h-12 md:h-20 object-contain"
-                                    />
+
+                                    {partner.website ? (
+
+                                        <a
+                                            href={partner.website}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+
+                                            <img
+                                                src={partner.logo}
+                                                alt={partner.name}
+                                                className="h-12 object-contain transition duration-300 hover:scale-105 md:h-20"
+                                            />
+
+                                        </a>
+
+                                    ) : (
+
+                                        <img
+                                            src={partner.logo}
+                                            alt={partner.name}
+                                            className="h-12 object-contain transition duration-300 hover:scale-105 md:h-20"
+                                        />
+
+                                    )}
+
                                 </div>
+
                             ))}
                         </div>
                     </div>

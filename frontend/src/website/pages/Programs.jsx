@@ -13,75 +13,50 @@ import {
 
 import bg from "../../assets/images/program/bg.jpg";
 
-import p1 from "../../assets/images/program/p1.jpg";
-import p2 from "../../assets/images/program/p2.jpg";
-import p3 from "../../assets/images/program/p3.jpg";
-import p4 from "../../assets/images/program/p4.jpg";
-import p5 from "../../assets/images/program/p5.jpg";
-import p6 from "../../assets/images/program/p6.jpg";
-import p7 from "../../assets/images/program/p7.jpg";
-
 export default function ProgramsPage() {
-    const [selectedActivity, setSelectedActivity] = useState(null);
 
-    const programGroups = [
+    const programs = [
         {
-            title: "Integrated Early Childhood Care and Development Program (IECCD)",
+            title: "Natural Resource Protection",
+            icon: GlobeAltIcon,
+            color: "emerald",
             description:
-                "By 2029, boys and girls under 6 years old who are beneficiaries will receive care and development with potential and opportunities to continue their education.",
-            activities: [
-                {
-                    title: "Health and Nutrition",
-                    image: p1,
-                    description: "Improve child nutrition and health through community-based services. EHE works alongside local communities to improve education, health, environmental protection, and sustainable livelihoods. Our integrated programs empower children, youth, families, and vulnerable communities through long-term development initiatives."
-                },
-                {
-                    title: "Clean Water & Sanitation",
-                    image: p2,
-                    description: "Increase access to safe water and sanitation facilities."
-                },
-                {
-                    title: "Early Learning",
-                    image: p3,
-                    description: "Promote quality early childhood learning opportunities."
-                },
-            ]
+                "Strengthening community capacity to protect forests, biodiversity, land, water resources, and indigenous natural heritage through sustainable natural resource management."
         },
-
         {
-            title: "Integrated Quality Basic Education Program (IQBE)",
+            title: "Education and Health",
+            icon: AcademicCapIcon,
+            color: "blue",
             description:
-                "By 2029, boys and girls aged 6–15 in target areas have access to quality basic education.",
-            activities: [
-                {
-                    title: "Quality Learning",
-                    image: p4,
-                    description: "Improve teaching and learning quality."
-                },
-                {
-                    title: "Equal Access to Education",
-                    image: p5,
-                    description: "Ensure inclusive and equitable education."
-                }
-            ]
+                "Improving access to quality education, promoting healthy lifestyles, and increasing community awareness of public health and well-being."
         },
-
         {
-            title: "Skills For Professional Program (S4P)",
+            title: "Community Development",
+            icon: UsersIcon,
+            color: "amber",
             description:
-                "By 2029, young women and men gain market-relevant skills for employment.",
-            activities: [
-                {
-                    title: "Challenges Facing Youth",
-                    image: p6,
-                    description: "Address barriers to education and employment."
-                },
-                {
-                    title: "Strategic Issues",
-                    image: p7,
-                    description: "Develop vocational and entrepreneurship skills."
-                }
-            ]
+                "Empowering communities through leadership development, local participation, sustainable livelihoods, and improved social and economic resilience."
+        },
+        {
+            title: "Community Capacity Building",
+            icon: BriefcaseIcon,
+            color: "purple",
+            description:
+                "Building the knowledge and skills of local communities, indigenous peoples, women, and youth to effectively manage their own development initiatives."
+        },
+        {
+            title: "Community Network Strengthening",
+            icon: HeartIcon,
+            color: "rose",
+            description:
+                "Supporting community organizations and local networks to collaborate, advocate, and share knowledge for sustainable development."
+        },
+        {
+            title: "Community Mobilization",
+            icon: MapPinIcon,
+            color: "teal",
+            description:
+                "Encouraging active participation of citizens in environmental conservation, social development, and community decision-making processes."
         }
     ];
 
@@ -110,7 +85,7 @@ export default function ProgramsPage() {
             </section>
 
             {/* Section Header */}
-            <section className="relative py-8 md:py-16 bg-gradient-to-b from-white via-emerald-50/40 to-white">
+            <section className="relative py-8 bg-gradient-to-b from-white via-emerald-50/40 to-white">
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
                     <div className="max-w-3xl mx-auto text-center">
@@ -143,121 +118,67 @@ export default function ProgramsPage() {
                 </div>
             </section>
 
-            <section className="py-6 bg-slate-50">
-                <div className="max-w-full mx-auto px-6">
+            {/* Program Areas */}
+            <section className="py-8 bg-white">
+                <div className="max-w-full mx-auto px-6 lg:px-8">
 
-                    {programGroups.map((program, index) => (
+                    <div className="text-center mb-6">
+                        <span className="inline-flex items-center rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-700">
+                            What We Do
+                        </span>
 
-                        <div key={index} className="mb-8 md:mb-16">
+                        <h2 className="mt-5 text-xl lg:text-3xl font-bold text-slate-900">
+                            Our Program Areas
+                        </h2>
 
-                            <div className="text-center mb-12">
+                        <p className="mt-6 max-w-3xl mx-auto text-sm md:text-lg text-slate-600 leading-8">
+                            We implement integrated community development programs that
+                            strengthen livelihoods, improve education and health, conserve
+                            natural resources, and empower local communities for a
+                            sustainable future.
+                        </p>
+                    </div>
 
-                                <h2 className="mt-3 text-xl md:text-3xl font-bold text-slate-900">
-                                    {program.title}
-                                </h2>
+                    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
 
-                                <div className="w-20 h-1 bg-emerald-600 rounded-full mx-auto mt-5"></div>
+                        {programs.map((program, index) => {
+                            const Icon = program.icon;
 
-                                <p className="max-w-3xl mx-auto mt-6 text-slate-600 leading-8">
-                                    {program.description}
-                                </p>
+                            return (
+                                <div
+                                    key={index}
+                                    className="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                                >
 
-                            </div>
+                                    <div
+                                        className={`mb-6 flex h-16 w-16 items-center justify-center rounded-2xl
+                                            ${program.color === "emerald" && "bg-emerald-100 text-emerald-600"}
+                                            ${program.color === "blue" && "bg-blue-100 text-blue-600"}
+                                            ${program.color === "rose" && "bg-rose-100 text-rose-600"}
+                                            ${program.color === "amber" && "bg-amber-100 text-amber-600"}
+                                            ${program.color === "purple" && "bg-purple-100 text-purple-600"}
+                                            ${program.color === "teal" && "bg-teal-100 text-teal-600"}
+                                        `}
+                                    >
+                                        <Icon className="h-8 w-8" />
+                                    </div>
 
-                            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-                                {program.activities.map((activity, i) => {
-                                    const Icon = activity.icon;
+                                    <h3 className="text-base md:text-xl font-bold text-slate-900">
+                                        {program.title}
+                                    </h3>
 
-                                    return (
-                                        <div
-                                            key={i}
-                                            className="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
-                                        >
-                                            {/* Image */}
-                                            <div className="relative overflow-hidden">
-                                                <img
-                                                    src={activity.image}
-                                                    alt={activity.title}
-                                                    className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                                />
+                                    <p className="mt-4 leading-7 text-slate-600">
+                                        {program.description}
+                                    </p>
 
-                                                {/* Overlay */}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
+                                </div>
+                            );
+                        })}
 
-                                            </div>
-
-                                            {/* Content */}
-                                            <div className="p-6 flex flex-col h-[230px]">
-
-                                                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition overflow-hidden line-clamp-1">
-                                                    {activity.title}
-                                                </h3>
-
-                                                <p className="text-slate-600 text-sm leading-7 line-clamp-3">
-                                                    {activity.description}
-                                                </p>
-
-                                                {/* Divider */}
-                                                <div className="my-5 border-t border-slate-100" />
-
-                                                {/* Button */}
-                                                <button
-                                                    onClick={() => setSelectedActivity(activity)}
-                                                    className="flex items-center justify-between text-emerald-600 font-semibold group/button">
-                                                    <span className="cursor-pointer">Learn More →</span>
-                                                </button>
-
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-
-                        </div>
-
-                    ))}
+                    </div>
 
                 </div>
             </section>
-
-            {selectedActivity && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-                    <div className="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
-
-                        <img
-                            src={selectedActivity.image}
-                            alt={selectedActivity.title}
-                            className="w-full h-64 md:h-96 object-cover"
-                        />
-
-                        <div className="p-4 md:p-8">
-
-                            <div className="flex justify-between items-start">
-
-                                <h2 className="text-lg md:text-3xl font-bold text-green-700">
-                                    {selectedActivity.title}
-                                </h2>
-
-                            </div>
-
-                            <p className="mt-3 md:mt-6 text-slate-700 leading-8">
-                                {selectedActivity.description}
-                            </p>
-
-                            <div className="mt-4 md:mt-8 text-right">
-                                <button
-                                    onClick={() => setSelectedActivity(null)}
-                                    className="px-6 py-2 rounded-xl bg-orange-300 text-white hover:bg-orange-500"
-                                >
-                                    Close
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            )}
-
         </div>
     );
 }
