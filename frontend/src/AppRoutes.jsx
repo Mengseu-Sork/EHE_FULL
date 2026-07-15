@@ -15,6 +15,7 @@ import Login from "./admin/pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
 import History from "./admin/pages/History";
 import Supporter from "./admin/pages/Supporter";
+import NewArticles from "./admin/pages/NewsArticle";
 
 export default function AppRoutes() {
     const location = useLocation();
@@ -39,6 +40,7 @@ export default function AppRoutes() {
             <Route path="/admin" element={<AdminLayout />}>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="history" element={<History />} />
+                <Route path="news" element={<NewArticles />} />
                 <Route path="supporters" element={<Supporter />} />
             </Route>
             
