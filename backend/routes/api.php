@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\Api\HistoryController;
 use App\Http\Controllers\Api\ProgramController;
+use App\Http\Controllers\Api\NewsArticleController;
 
 
 // Public routes
@@ -36,5 +37,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/supporters/{id}', [PartnerController::class, 'update']);
     Route::delete('/supporters/{id}', [PartnerController::class, 'destroy']);
 
+    //new
+    Route::apiResource('news', NewsArticleController::class);
     
 });
