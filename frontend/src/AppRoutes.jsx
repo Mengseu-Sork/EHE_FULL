@@ -18,6 +18,7 @@ import History from "./admin/pages/History";
 import Supporter from "./admin/pages/Supporter";
 import Project from "./admin/pages/Project";
 import AdminVideos from "./admin/pages/Videos";
+import NewArticles from "./admin/pages/NewsArticle";
 
 export default function AppRoutes() {
     const location = useLocation();
@@ -43,6 +44,7 @@ export default function AppRoutes() {
             <Route path="/admin" element={<AdminLayout />}>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="history" element={<History />} />
+                <Route path="news" element={<NewArticles />} />
                 <Route path="supporters" element={<Supporter />} />
                 <Route path="projects" element={<Project />} />
                 <Route path="videos" element={<AdminVideos />} />
