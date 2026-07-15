@@ -1,55 +1,39 @@
-import {
-    GlobeAltIcon,
-    UsersIcon,
-    HeartIcon,
-    AcademicCapIcon,
-} from "@heroicons/react/24/outline";
-
 import heroBg from "../../assets/images/project/bg.jpg";
 
+import api from "../../api/api";
+import { useEffect, useState } from "react";
+
+
 export default function Projects() {
-    const projects = [
-        {
-            title: "Natural Resource Protection",
-            category: "Environment",
-            status: "Active",
-            statusColor: "bg-green-500",
-            image:
-                "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200",
-            description:
-                "Supporting communities to protect forests, biodiversity, and natural resources through sustainable management and conservation efforts.",
-        },
-        {
-            title: "Community Empowerment",
-            category: "Community",
-            status: "Ongoing",
-            statusColor: "bg-blue-500",
-            image:
-                "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200",
-            description:
-                "Strengthening local leadership, participation, and accountability for sustainable community development.",
-        },
-        {
-            title: "Health Awareness Program",
-            category: "Health",
-            status: "Completed",
-            statusColor: "bg-purple-500",
-            image:
-                "https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200",
-            description:
-                "Improving health awareness, sanitation, hygiene, and access to community health services.",
-        },
-        {
-            title: "Education & Capacity Building",
-            category: "Education",
-            status: "Active",
-            statusColor: "bg-amber-500",
-            image:
-                "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200",
-            description:
-                "Providing training, awareness raising, and knowledge sharing to strengthen local capacity.",
-        },
-    ];
+    const [projects, setProjects] = useState([]);
+
+    const [loading, setLoading] = useState(true);
+
+    const [selectedProject, setSelectedProject] = useState(null);
+
+    useEffect(() => {
+        fetchProjects();
+    }, []);
+
+    const fetchProjects = async () => {
+        try {
+            const { data } = await api.get("/projects");
+            setProjects(data);
+        } catch (error) {
+            console.error("Failed to load projects:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const storageUrl = `${import.meta.env.VITE_API_URL.replace("/api", "")}/storage`;
+
+    const statusColors = {
+        Active: "bg-green-500",
+        Ongoing: "bg-blue-500",
+        Completed: "bg-purple-500",
+        Pending: "bg-yellow-500",
+    };
 
     return (
         <div className="bg-white">
@@ -63,7 +47,7 @@ export default function Projects() {
 
                 <div className="relative max-w-7xl mx-auto px-6 w-full">
                     <div className="max-w-3xl">
-                        <span className="inline-flex items-center rounded-full px-6 py-1 md:py-2 bg-emerald-500/20 border-emerald-400/30 text-[10px] md:text-xs text-emerald-100bg-emerald-500/20 border border-emerald-400/30 text-emerald-100">
+                        <span className="inline-flex items-center rounded-full px-6 py-1 md:py-2 bg-emerald-500/20 border-emerald-400/30 text-[10px] md:text-xs  border text-emerald-100">
                             🌿 Our Projects
                         </span>
 
@@ -118,28 +102,28 @@ export default function Projects() {
 
                             return (
                                 <div
-                                    key={index}
+                                    key={project.id}
                                     className="group overflow-hidden rounded-3xl bg-white border border-slate-200 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-3"
                                 >
                                     {/* Image */}
                                     <div className="relative overflow-hidden">
 
                                         <img
-                                            src={project.image}
+                                            src={
+                                                project.image
+                                                    ? `${storageUrl}/${project.image}`
+                                                    : "/images/no-image.jpg"
+                                            }
                                             alt={project.title}
                                             className="w-full h-44 sm:h-52 md:h-60 lg:h-64 object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
 
                                         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
 
-                                        {/* Category */}
-                                        <span className="absolute top-5 left-5 rounded-full bg-white/20 backdrop-blur-md px-3 py-1 text-xs font-semibold text-white">
-                                            {project.category}
-                                        </span>
-
                                         {/* Status */}
                                         <span
-                                            className={`absolute top-5 right-5 rounded-full ${project.statusColor} px-3 py-1 text-xs font-semibold text-white`}
+                                            className={`absolute top-5 right-5 rounded-full ${statusColors[project.status] || "bg-gray-500"
+                                                } px-3 py-1 text-xs font-semibold text-white`}
                                         >
                                             {project.status}
                                         </span>
@@ -158,14 +142,15 @@ export default function Projects() {
                                             {project.title}
                                         </h3>
 
-                                        <p className="mt-4 text-slate-600 leading-7 line-clamp-3">
+                                        <p className="mt-3 text-slate-600 text-xs md:text-sm leading-7 line-clamp-3">
                                             {project.description}
                                         </p>
 
                                         {/* Footer */}
                                         <div className="mt-6 flex items-center justify-between">
 
-                                            <button className="flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-semibold cursor-pointer text-white transition hover:bg-emerald-700">
+                                            <button onClick={() => setSelectedProject(project)}
+                                                className="flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-semibold cursor-pointer text-white transition hover:bg-emerald-700">
                                                 Learn More
 
                                                 <svg
@@ -195,6 +180,67 @@ export default function Projects() {
                 </div>
 
             </section>
+
+            {/* Project Detail Modal */}
+            {selectedProject && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+                    onClick={() => setSelectedProject(null)}
+                >
+                    <div
+                        className="relative w-full max-w-2xl overflow-hidden rounded-3xl bg-white shadow-2xl max-h-[90vh] overflow-y-auto"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <img
+                            src={
+                                selectedProject.image
+                                    ? `${import.meta.env.VITE_API_URL.replace("/api", "")}/storage/${selectedProject.image}`
+                                    : "/images/no-image.jpg"
+                            }
+                            alt={selectedProject.title}
+                            className="h-64 md:h-96 w-full object-cover"
+                        />
+
+                        <div className="p-8">
+
+                            <div className="flex flex-wrap items-center gap-3 mb-5">
+
+                                <span className="rounded-full bg-emerald-100 px-4 py-1 text-xs md:text-sm font-semibold text-emerald-700">
+                                    {selectedProject.category}
+                                </span>
+
+                                <span
+                                    className={`rounded-full px-4 py-1 text-xs md:text-sm font-semibold text-white ${statusColors[selectedProject.status] || "bg-gray-500"
+                                        }`}
+                                >
+                                    {selectedProject.status}
+                                </span>
+
+                            </div>
+
+                            <h2 className="text-lg md:text-xl font-bold text-slate-900">
+                                {selectedProject.title}
+                            </h2>
+
+                            <p className="mt-4 whitespace-pre-line text-xs md:text-sm leading-8 text-slate-600">
+                                {selectedProject.description}
+                            </p>
+
+                            <div className="mt-8 flex justify-end">
+
+                                <button
+                                    onClick={() => setSelectedProject(null)}
+                                    className="rounded-xl bg-orange-400 cursor-pointer px-6 py-2 font-semibold text-white hover:bg-orange-600"
+                                >
+                                    Close
+                                </button>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            )}
 
         </div>
     );

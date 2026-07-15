@@ -7,6 +7,7 @@ import {
     FolderIcon,
     NewspaperIcon,
     UserGroupIcon,
+    PlayCircleIcon,
     RectangleGroupIcon,
     ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
@@ -50,6 +51,11 @@ export default function AdminLayout() {
             path: "/admin/supporters",
             icon: UserGroupIcon,
         },
+        {
+            name: "Videos",
+            path: "/admin/videos",
+            icon: PlayCircleIcon,
+        },
     ];
 
     return (
@@ -63,11 +69,11 @@ export default function AdminLayout() {
                 {/* Logo */}
                 <div className="flex h-24 items-center justify-between border-b border-white/10 px-4">
 
-                    <div className="flex items-center gap-3 ml-7">
+                    <div className="flex items-center gap-3">
 
                         {sidebarOpen && (
 
-                            <div>
+                            <div className="ml-7">
 
                                 <h1 className="text-xl font-bold text-white">
                                     EHE Admin
@@ -152,7 +158,7 @@ export default function AdminLayout() {
             <div className="flex flex-1">
 
                 {/* Content */}
-                <main className="flex-1 overflow-auto p-6">
+                <main className="flex-1 overflow-auto p-4">
                     <Outlet />
                 </main>
 

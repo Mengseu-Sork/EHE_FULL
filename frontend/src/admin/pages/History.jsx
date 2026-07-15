@@ -101,7 +101,7 @@ export default function HistoryAdmin() {
                         setEditing(null);
                         setShowForm(true);
                     }}
-                    className="inline-flex items-center gap-2 rounded-xl bg-green-600 px-5 py-3 font-medium text-white shadow-lg transition duration-200 hover:bg-green-700 hover:shadow-xl"
+                    className="inline-flex items-center cursor-pointer gap-2 rounded-xl bg-green-600 px-5 py-3 font-medium text-white shadow-lg transition duration-200 hover:bg-green-700 hover:shadow-xl"
                 >
                     <FaPlus />
                     Add History

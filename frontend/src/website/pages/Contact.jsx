@@ -195,7 +195,7 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-6 items-start mb-4 md:mb-10">
 
             {/* Left - Map */}
-            <div className="relative overflow-hidden rounded-3xl shadow-xl">
+            <div className="relative overflow-hidden rounded-3xl shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(15,23,42,0.18)]">
 
               <iframe
                 title="Office Location"
@@ -209,7 +209,7 @@ export default function Contact() {
             </div>
 
             {/* Right: Send Us a Message */}
-            <div className="bg-gray-50 rounded-2xl p-5 sm:p-6 md:p-8 shadow-sm">
+            <div className="rounded-3xl border border-gray-200 bg-white p-5 sm:p-6 md:p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(15,23,42,0.18)]">
               <h2 className="text-xl sm:text-2xl font-bold text-green-700 mb-4 sm:mb-6">
                 Send Us a Message
               </h2>
@@ -278,7 +278,7 @@ export default function Contact() {
 
               <button
                 onClick={handleSubmit}
-                className="w-full py-3 rounded-lg text-white font-semibold text-sm transition-opacity hover:opacity-90 active:opacity-80 flex items-center justify-center gap-2"
+                className="w-full py-3 rounded-lg text-white cursor-pointer font-semibold text-sm transition-opacity hover:opacity-90 active:opacity-80 flex items-center justify-center gap-2"
                 style={{ backgroundColor: ACCENT }}
               >
                 Send Message

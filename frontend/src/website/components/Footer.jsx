@@ -19,6 +19,7 @@ const menus = [
     { name: "Our Programs", path: "/programs" },
     { name: "Our Projects", path: "/projects" },
     { name: "News & Events", path: "/news" },
+    { name: "Videos", path: "/videos" },
     { name: "Contact", path: "/contact" },
 ];
 

@@ -215,7 +215,7 @@ export default function HistoryTable({
                                                             : item.id
                                                     )
                                                 }
-                                                className="rounded-lg p-2 text-gray-600 transition hover:bg-gray-100"
+                                                className="rounded-lg p-2 text-gray-600 transition cursor-pointer hover:bg-gray-100"
                                             >
                                                 <FaEllipsisV />
                                             </button>

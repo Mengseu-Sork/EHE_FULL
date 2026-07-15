@@ -111,7 +111,7 @@ export default function Supporter() {
                             setEditing(null);
                             setShowForm(true);
                         }}
-                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-3 font-semibold text-white shadow-lg transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
+                        className="inline-flex items-center cursor-pointer gap-2 rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-3 font-semibold text-white shadow-lg transition duration-300 hover:-translate-y-0.5 hover:shadow-xl"
                     >
                         <FaPlus />
 

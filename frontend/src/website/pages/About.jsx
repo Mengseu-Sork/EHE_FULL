@@ -4,11 +4,7 @@ import unicefLogo from "../../assets/partner/UNICEF.jpg";
 import ministryLogo from "../../assets/partner/Ministry.jpg";
 
 import bg from "../../assets/images/about/bg.jpg";
-import setion from "../../assets/images/about/setion.jpg";
 import image from "../../assets/images/about/image.jpg";
-import icon1 from "../../assets/images/about/icon1.jpg";
-import icon2 from "../../assets/images/about/icon2.jpg";
-import icon3 from "../../assets/images/about/icon3.jpg";
 
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -419,7 +415,7 @@ export default function About() {
 
                     {/* Partner Cards */}
                     <div className="relative overflow-hidden mt-8 md:mt-16">
-                        <div className="flex animate-marquee gap-6 md:gap-8">
+                        <div className="flex cursor-pointer animate-marquee gap-6 md:gap-8">
                             {[...partners, ...partners].map((partner, index) => (
                                 <div
                                     key={`${partner.id}-${index}`}

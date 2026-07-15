@@ -213,7 +213,7 @@ export default function SupporterTable({
                                                             : item.id
                                                     )
                                                 }
-                                                className="rounded-xl border border-gray-200 bg-white p-2.5 shadow-sm transition hover:border-green-300 hover:bg-green-50"
+                                                className="rounded-xl cursor-pointer border border-gray-200 bg-white p-2.5 shadow-sm transition hover:border-green-300 hover:bg-green-50"
                                             >
 
                                                 <FaEllipsisV className="text-gray-600" />

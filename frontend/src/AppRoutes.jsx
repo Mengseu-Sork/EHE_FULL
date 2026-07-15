@@ -7,6 +7,7 @@ import About from "./website/pages/About";
 import Programs from "./website/pages/Programs";
 import Projects from "./website/pages/Projects";
 import News from "./website/pages/News";
+import Videos from "./website/pages/Video";
 import Contact from "./website/pages/Contact";
 import Donate from "./website/pages/Donate";
 
@@ -15,6 +16,8 @@ import Login from "./admin/pages/Login";
 import Dashboard from "./admin/pages/Dashboard";
 import History from "./admin/pages/History";
 import Supporter from "./admin/pages/Supporter";
+import Project from "./admin/pages/Project";
+import AdminVideos from "./admin/pages/Videos";
 
 export default function AppRoutes() {
     const location = useLocation();
@@ -28,6 +31,7 @@ export default function AppRoutes() {
                 <Route path="/programs" element={<Programs />} />
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/news" element={<News />} />
+                <Route path="/videos" element={<Videos />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/donate" element={<Donate />} />
             </Route>
@@ -40,6 +44,8 @@ export default function AppRoutes() {
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="history" element={<History />} />
                 <Route path="supporters" element={<Supporter />} />
+                <Route path="projects" element={<Project />} />
+                <Route path="videos" element={<AdminVideos />} />
             </Route>
             
         </Routes>
