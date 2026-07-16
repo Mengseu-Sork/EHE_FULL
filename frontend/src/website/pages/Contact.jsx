@@ -15,7 +15,13 @@ const initialForm = {
 const CONTACT_INFO = [
   {
     label: "Phone",
-    value: "(+855) 12 673 634",
+    value: (
+      <>
+        (+855) 12 673 634
+        <br />
+        (+855) 16 673 634
+      </>
+    ),
     iconPaths: [
       "M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z",
     ],
@@ -111,7 +117,7 @@ export default function Contact() {
             </span>
           </h1>
 
-          <p className="mt-2 md:mt-6 max-w-3xl text-sm md:text-lg leading-7 md:leading-8 text-slate-200">
+          <p className="mt-2 md:mt-6 max-w-3xl text-sm md:text-base leading-6 md:leading-8 text-slate-200">
             We'd love to hear from you. Whether you have questions, want to
             collaborate, support our initiatives, or learn more about our work,
             our team is ready to connect with you.
@@ -125,7 +131,7 @@ export default function Contact() {
 
           {/* Heading */}
           <div className="text-center max-w-3xl mx-auto">
-            <span className="text-emerald-600 font-semibold uppercase tracking-widest text-sm">
+            <span className="text-emerald-600 font-semibold uppercase tracking-widest text-xs md:text-sm">
               Contact Information
             </span>
 
@@ -133,7 +139,7 @@ export default function Contact() {
               Get in Touch
             </h2>
 
-            <p className="mt-5 text-slate-600 leading-8">
+            <p className="mt-3 md:mt-5 text-slate-600 text-sm md:text-base leading-6 md:leading-8">
               We welcome your questions, ideas, and partnership opportunities.
               Feel free to contact us using any of the information below.
             </p>
@@ -167,7 +173,7 @@ export default function Contact() {
 
                     {/* Value */}
                     <div
-                      className={`mt-4 text-sm leading-7 text-slate-600 ${valueClassName || ""}`}
+                      className={`mt-4 text-sm leading-6 md:leading-7 text-slate-600 ${valueClassName || ""}`}
                     >
                       {value}
                     </div>
@@ -200,7 +206,7 @@ export default function Contact() {
               <iframe
                 title="Office Location"
                 src="https://maps.google.com/maps?q=12.6539179,104.9260117(Kampong+Village,+Sangkat+Kampong+Rotes,+Krong+Stung+Sen,+Kampong+Thom+Province,+Cambodia)&z=15&output=embed"
-                className="w-full h-[600px]"
+                className="w-full h-[400px] md:h-[600px]"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"

@@ -27,21 +27,21 @@ export default function AppRoutes() {
         <Routes key={location.pathname}>
             {/* Website */}
             <Route element={<MainLayout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/programs" element={<Programs />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/news" element={<News />} />
-                <Route path="/videos" element={<Videos />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/donate" element={<Donate />} />
+                <Route path="/kh/home" element={<Home />} />
+                <Route path="/kh/about" element={<About />} />
+                <Route path="/kh/programs" element={<Programs />} />
+                <Route path="/kh/projects" element={<Projects />} />
+                <Route path="/kh/news" element={<News />} />
+                <Route path="/kh/videos" element={<Videos />} />
+                <Route path="/kh/contact" element={<Contact />} />
+                <Route path="/kh/donate" element={<Donate />} />
             </Route>
 
             {/* Login */}
-            <Route path="/admin/login" element={<Login />} />
+            <Route path="/kh/admin/login" element={<Login />} />
 
             {/* Admin */}
-            <Route path="/admin" element={<AdminLayout />}>
+            <Route path="/kh/admin" element={<AdminLayout />}>
                 <Route path="dashboard" element={<Dashboard />} />
                 <Route path="history" element={<History />} />
                 <Route path="news" element={<NewArticles />} />

@@ -28,32 +28,32 @@ export default function AdminLayout() {
     const menu = [
         {
             name: "Dashboard",
-            path: "/admin/dashboard",
+            path: "/kh/admin/dashboard",
             icon: HomeIcon,
         },
         {
             name: "History",
-            path: "/admin/history",
+            path: "/kh/admin/history",
             icon: ClockIcon,
         },
         {
             name: "Projects",
-            path: "/admin/projects",
+            path: "/kh/admin/projects",
             icon: FolderIcon,
         },
         {
             name: "News",
-            path: "/admin/news",
+            path: "/kh/admin/news",
             icon: NewspaperIcon,
         },
         {
             name: "Supporters",
-            path: "/admin/supporters",
+            path: "/kh/admin/supporters",
             icon: UserGroupIcon,
         },
         {
             name: "Videos",
-            path: "/admin/videos",
+            path: "/kh/admin/videos",
             icon: PlayCircleIcon,
         },
     ];

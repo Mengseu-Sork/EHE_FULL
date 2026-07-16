@@ -174,12 +174,12 @@ export default function About() {
                             </span>
 
                             <h2
-                                className="ehe-serif mt-4 text-xl md:text-3xl text-green-700 font-bold"
+                                className="ehe-serif mt-2 md:mt-4 text-lg md:text-3xl text-green-700 font-bold"
                             >
                                 Rooted in the communities we serve
                             </h2>
 
-                            <p className="mt-6 leading-6 text-[#3F4A44] text-justify">
+                            <p className="mt-3 md:mt-6 leading-6 text-sm md:text-base text-[#3F4A44] text-justify">
                                 Established in 2007, Environment and Health Education Organization (EHE)
 
                                 is a Cambodian non-governmental organization dedicated to empowering
@@ -187,7 +187,7 @@ export default function About() {
                                 communities and promoting sustainable development.
                             </p>
 
-                            <p className="mt-4 leading-6 text-[#3F4A44] text-justify">
+                            <p className="mt-2 md:mt-4 leading-6 text-sm md:text-base text-[#3F4A44] text-justify">
                                 EHE works closely with local communities, civil society networks,
 
                                 and development partners to protect natural resources, strengthen
@@ -206,15 +206,15 @@ export default function About() {
                 <div className="max-w-full mx-auto px-6">
 
                     <div className="text-center max-w-3xl mx-auto">
-                        <span className="uppercase tracking-[0.2em] text-sm text-green-700 font-semibold">
+                        <span className="uppercase tracking-[0.2em] text-xs md:text-sm text-green-700 font-semibold">
                             Our Core Foundations
                         </span>
 
-                        <h2 className="ehe-serif text-xl md:text-3xl mt-4 text-green-950 font-bold">
+                        <h2 className="ehe-serif text-lg md:text-3xl mt-4 text-green-950 font-bold">
                             Vision, Mission & Values
                         </h2>
 
-                        <p className="mt-6 leading-8 text-gray-600">
+                        <p className="mt-4 md:mt-6 text-sm md:text-base leading-6 md:leading-8 text-gray-600">
                             The strategic pillars and moral principles that guide EHE's daily operations, community engagements, and advocacy efforts across Cambodia.
                         </p>
                     </div>
@@ -236,7 +236,7 @@ export default function About() {
                                         {item.title}
                                     </h3>
 
-                                    <p className="mt-4 text-gray-600 leading-7 text-xs md:text-sm">
+                                    <p className="mt-4 text-gray-600 leading-6 md:leading-7 text-xs md:text-sm">
                                         {item.description}
                                     </p>
                                 </div>
@@ -254,17 +254,17 @@ export default function About() {
                 <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-16">
 
                     {/* Heading */}
-                    <div className="text-center max-w-3xl mx-auto mb-16">
+                    <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
 
-                        <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold">
+                        <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-xs md:text-sm font-semibold">
                             Our History
                         </span>
 
-                        <h2 className="mt-6 text-xl md:text-3xl font-bold text-green-800">
+                        <h2 className="mt-3 md:mt-6 text-lg md:text-3xl font-bold text-green-800">
                             Our Journey
                         </h2>
 
-                        <p className="mt-4 text-slate-600 leading-8">
+                        <p className="mt-2 md:mt-4 text-sm md:text-base text-slate-600 leading-6 md:leading-8">
                             Over the years, EHE has grown alongside communities,
                             supporting environmental protection, education,
                             health awareness, and sustainable development.
@@ -308,14 +308,14 @@ export default function About() {
                             {history.map((item) => (
                                 <SwiperSlide key={item.id}>
 
-                                    <div className="relative text-center pb-8">
+                                    <div className="relative text-center pb-4 md:pb-8">
 
                                         {/* Circle Image */}
                                         <div
                                             className="
                                             relative
                                             mx-auto
-                                            w-52 h-52
+                                            w-40 md:w-52 h-40 md:h-52
                                             rounded-full
                                             overflow-hidden
                                             border-[5px]
@@ -342,7 +342,7 @@ export default function About() {
                                         {/* Description */}
                                         <p
                                             className="
-                                            mt-8
+                                            mt-4 md:mt-8
                                             text-slate-600
                                             leading-6
                                             max-w-sm
@@ -357,6 +357,7 @@ export default function About() {
                                         <h3
                                             className="
                                             text-xl
+                                            mt-4 md:mt-8
                                             md:text-4xl
                                             font-extrabold
                                             text-slate-800
@@ -368,7 +369,7 @@ export default function About() {
                                         {/* Dot */}
                                         <div
                                             className="
-                                            mt-6
+                                            mt-3 md:mt-6
                                             w-5
                                             h-5
                                             rounded-full
@@ -398,15 +399,15 @@ export default function About() {
 
                 <div className="relative max-w-full mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto">
-                        <span className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold uppercase tracking-wider">
+                        <span className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-xs md:text-sm font-semibold uppercase tracking-wider">
                             Collaboration
                         </span>
 
-                        <h2 className="ehe-serif text-xl md:text-3xl mt-6 text-green-950">
+                        <h2 className="ehe-serif text-lg md:text-3xl mt-3 md:mt-6 text-green-950">
                             Partners & Supporters
                         </h2>
 
-                        <p className="mt-6 text-lg leading-8 text-gray-600">
+                        <p className="mt-3 md:mt-6 text-sm md:text-base leading-6 md:leading-8 text-gray-600">
                             Together with development partners, government agencies,
                             NGOs, and local communities, we create sustainable solutions
                             for health, education, and environmental protection.

@@ -38,7 +38,7 @@ export default function Statistics() {
     ];
 
     return (
-        <section className="relative py-10 md:py-16 overflow-hidden bg-gradient-to-br from-green-50 via-white to-emerald-50">
+        <section className="relative py-8 md:py-16 overflow-hidden bg-gradient-to-br from-green-50 via-white to-emerald-50">
 
             {/* Background */}
             <div className="absolute top-0 left-0 w-72 h-72 bg-emerald-200/20 rounded-full blur-3xl" />
@@ -53,14 +53,14 @@ export default function Statistics() {
                         Our Journey
                     </span>
 
-                    <h2 className="mt-6 text-xl md:text-2xl lg:text-3xl font-bold text-slate-900">
+                    <h2 className="mt-6 text-lg md:text-2xl lg:text-3xl font-bold text-slate-900">
                         Strengthening Communities,
                         <span className="block text-emerald-600 mt-2">
                             Protecting Natural Resources
                         </span>
                     </h2>
 
-                    <p className="mt-5 text-base md:text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto">
+                    <p className="mt-3 md:mt-5 text-sm md:text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto">
                         Since 2007, EHE has worked closely with local communities
                         to protect natural resources, improve livelihoods,
                         promote health and education, and support sustainable

@@ -8,13 +8,13 @@ export default function Navbar() {
     const navRef = useRef(null);
 
     const menus = [
-        { name: "Home", path: "/" },
-        { name: "About", path: "/about" },
-        { name: "Our Programs", path: "/programs" },
-        { name: "Our Projects", path: "/projects" },
-        { name: "News & Events", path: "/news" },
-        { name: "Videos", path: "/videos" },
-        { name: "Contact", path: "/contact" },
+        { name: "Home", path: "/kh/home" },
+        { name: "About", path: "/kh/about" },
+        { name: "Our Programs", path: "/kh/programs" },
+        { name: "Our Projects", path: "/kh/projects" },
+        { name: "News & Events", path: "/kh/news" },
+        { name: "Videos", path: "/kh/videos" },
+        { name: "Contact", path: "/kh/contact" },
     ];
 
     return (
@@ -23,7 +23,7 @@ export default function Navbar() {
                 <div className="h-20 flex items-center justify-between">
                     {/* Logo */}
                     <NavLink
-                        to="/"
+                        to="/kh/home"
                         className="flex items-center gap-3"
                     >
                         <div className="w-10 md:w-16 h-10 md:h-16 rounded-full flex items-center justify-center shadow-lg">
@@ -54,7 +54,7 @@ export default function Navbar() {
                                 className={({ isActive }) =>
                                     `relative py-2 text-[16px] transition ${isActive
                                         ? "text-emerald-600 font-semibold"
-                                        : "text-slate-700 hover:text-emerald-600"
+                                        : "text-slate-700 font-semibold hover:text-emerald-600"
                                     }`
                                 }
                             >

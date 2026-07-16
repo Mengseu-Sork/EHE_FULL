@@ -1,88 +1,70 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "../../api/api";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import { FaTimes } from "react-icons/fa";
+
 
 export default function CTA() {
-    const posts = [
-        {
-            id: 1,
-            category: "Water & Sanitation",
-            date: "February 28, 2024",
-            title: "Clean Water Project Brings Relief to 10,000 People",
-            description:
-                "The completion of new wells and water purification systems has provided clean and safe drinking water to thousands of families.",
-            image:
-                "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800",
-        },
-        {
-            id: 2,
-            category: "Emergency Relief",
-            date: "February 20, 2024",
-            title: "Emergency Response Supporting Communities",
-            description:
-                "Rapid response teams deployed emergency shelter, food, and medical care to affected communities.",
-            image:
-                "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800",
-        },
-        {
-            id: 3,
-            category: "Environment",
-            date: "February 15, 2024",
-            title: "Protecting Forests and Natural Resources",
-            description:
-                "Communities work together to conserve biodiversity and strengthen sustainable resource management.",
-            image:
-                "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
-        },
-        {
-            id: 4,
-            category: "Education",
-            date: "January 30, 2024",
-            title: "Supporting Education for Rural Children",
-            description:
-                "Improving access to quality education and creating opportunities for lifelong learning.",
-            image:
-                "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800",
-        },
-        {
-            id: 5,
-            category: "Health",
-            date: "January 25, 2024",
-            title: "Community Health Awareness Program",
-            description:
-                "Promoting health, sanitation, and healthy lifestyles through community engagement.",
-            image:
-                "https://images.unsplash.com/photo-1584515933487-779824d29309?w=800",
-        },
-        {
-            id: 6,
-            category: "Community Development",
-            date: "January 10, 2024",
-            title: "Strengthening Local Communities",
-            description:
-                "Building leadership, participation, and sustainable livelihoods across Cambodia.",
-            image:
-                "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800",
-        },
-    ];
+
+    const [posts, setPosts] = useState([]);
+
+    const [loading, setLoading] = useState(true);
 
     const [selectedPost, setSelectedPost] = useState(null);
 
+    const storageUrl = import.meta.env.VITE_STORAGE_URL;
+
+
+    useEffect(() => {
+
+        loadPosts();
+
+    }, []);
+
+    const loadPosts = async () => {
+
+        try {
+
+            const res = await api.get("/news?limit=4");
+
+            setPosts(res.data);
+
+        } catch (error) {
+
+            console.error(error);
+
+        } finally {
+
+            setLoading(false);
+
+        }
+
+    };
+
     return (
-        <section className="py-10 md:py-16 lg:py-16 bg-slate-50">
+        <section className="py-8 md:py-16 lg:py-16 bg-slate-50">
             <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Section Header */}
-                <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16">
+                <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-16">
 
                     <span className="inline-block px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold">
                         Stories From The Community
                     </span>
 
-                    <h2 className="mt-5 text-xl md:text-3xl lg:text-4xl font-bold text-slate-900">
+                    <h2 className="mt-5 text-lg md:text-3xl lg:text-4xl font-bold text-slate-900">
                         Our Latest Impact
                     </h2>
 
-                    <p className="mt-4 text-base md:text-lg text-slate-600">
+                    <p className="mt-4 text-sm md:text-lg text-slate-600">
                         Discover how EHE works alongside communities to protect
                         natural resources, improve livelihoods, and promote
                         health and education throughout Cambodia.
@@ -113,7 +95,11 @@ export default function CTA() {
                             <div className="relative overflow-hidden">
 
                                 <img
-                                    src={post.image}
+                                    src={
+                                        post.images?.length
+                                            ? `${storageUrl}/${post.images[0]}`
+                                            : "/images/no-image.png"
+                                    }
                                     alt={post.title}
                                     className="
                                         w-full
@@ -145,7 +131,14 @@ export default function CTA() {
                             <div className="p-5 md:p-6">
 
                                 <p className="text-sm text-slate-500 mb-3">
-                                    📅 {post.date}
+                                    📅 {new Date(post.published_at).toLocaleDateString(
+                                        "en-GB",
+                                        {
+                                            day: "2-digit",
+                                            month: "long",
+                                            year: "numeric",
+                                        }
+                                    )}
                                 </p>
 
                                 <h3 className="text-base md:text-lg font-bold text-slate-900 mb-3 line-clamp-1">
@@ -153,7 +146,7 @@ export default function CTA() {
                                 </h3>
 
                                 <p className="text-slate-600 text-sm md:text-base leading-7 line-clamp-3">
-                                    {post.description}
+                                    {post.body}
                                 </p>
 
                                 <button
@@ -161,7 +154,7 @@ export default function CTA() {
                                     className="
                                         inline-flex
                                         items-center
-                                        mt-5
+                                        mt-5 text-sm
                                         text-emerald-600
                                         font-semibold cursor-pointer
                                         hover:text-emerald-700
@@ -178,12 +171,13 @@ export default function CTA() {
                 </div>
 
                 {/* View All Button */}
-                <div className="text-center mt-12">
+                <div className="text-center mt-6 md:mt-12">
                     <Link
                         to="/news"
                         className="
                             inline-flex
                             items-center
+                            text-sm md:text-base
                             px-6 py-3
                             rounded-xl
                             bg-emerald-600
@@ -205,50 +199,123 @@ export default function CTA() {
                     onClick={() => setSelectedPost(null)}
                 >
                     <div
-                        className="bg-white rounded-3xl overflow-hidden max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+                        className="bg-white rounded-2xl overflow-hidden max-w-2xl w-full max-h-[90vh] overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <img
-                            src={selectedPost.image}
-                            alt={selectedPost.title}
-                            className="w-full h-64 md:h-96 object-cover"
-                        />
+                        <div className="px-4 py-2 md:px-6 md:py-3 flex items-start justify-between gap-2">
 
-                        <div className="p-6 md:p-8">
+                            <h1 className="flex-1 text-sm font-semibold leading-5 md:leading-7 text-slate-900 md:mt-2 md:text-lg">
 
-                            <span className="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">
-                                {selectedPost.category}
-                            </span>
-
-                            <p className="mt-3 text-sm text-slate-500">
-                                📅 {selectedPost.date}
-                            </p>
-
-                            <h2 className="mt-4 text-lg md:text-2xl font-bold text-slate-900">
                                 {selectedPost.title}
-                            </h2>
 
-                            <p className="mt-6 text-slate-600 leading-8">
-                                {selectedPost.description}
-                            </p>
+                            </h1>
 
-                            <div className="flex justify-end">
+                            <button
+                                onClick={() => setSelectedPost(null)}
+                                className="flex h-6 md:h-10 w-6 md:w-10 items-center justify-center rounded-full cursor-pointer bg-red-50 text-red-500 transition hover:bg-red-100 hover:text-red-600"
+                            >
+                                <FaTimes className="text-sm" />
+                            </button>
+
+                        </div>
+
+                        {selectedPost.images?.length ? (
+
+                            <Swiper
+                                modules={[Navigation, Pagination, Autoplay]}
+                                navigation
+                                pagination={{ clickable: true }}
+                                autoplay={{
+                                    delay: 6000,
+                                    disableOnInteraction: false,
+                                }}
+                                loop={selectedPost.images.length > 1}
+                                spaceBetween={20}
+                                slidesPerView={1}
+
+                            >
+
+                                {selectedPost.images.map((image, index) => (
+
+                                    <SwiperSlide key={index}>
+
+                                        <img
+                                            src={`${storageUrl}/${image}`}
+                                            alt={`Image ${index + 1}`}
+                                            className="h-[250px] md:h-[350px] w-full object-cover"
+                                        />
+
+                                    </SwiperSlide>
+
+                                ))}
+
+                            </Swiper>
+
+                        ) : (
+
+                            <div className="flex h-[350px] items-center justify-center bg-gray-100 text-gray-500">
+
+                                No Images
+
+                            </div>
+
+                        )}
+
+                        <div className="p-4 md:p-6">
+
+                            {/* Category & Date */}
+
+                            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-5">
+
+                                <span className="inline-flex items-center rounded-full bg-emerald-100 px-4 py-1.5 text-xs md:text-sm font-semibold text-emerald-700">
+
+                                    {selectedPost.category}
+
+                                </span>
+
+                                <div className="flex items-center gap-2 text-xs md:text-sm text-slate-500">
+
+                                    📅
+
+                                    {selectedPost.published_at
+                                        ? new Date(selectedPost.published_at).toLocaleDateString(
+                                            "en-GB",
+                                            {
+                                                day: "2-digit",
+                                                month: "long",
+                                                year: "numeric",
+                                            }
+                                        )
+                                        : "-"}
+
+                                </div>
+
+                            </div>
+
+                            {/* Body */}
+
+                            <div className="prose prose-slate mt-3 md:mt-6 max-w-none leading-6 md:leading-8 text-slate-700 text-xs md:text-sm">
+
+                                <p className="whitespace-pre-line">
+
+                                    {selectedPost.body}
+
+                                </p>
+
+                            </div>
+
+                            {/* Footer */}
+
+                            <div className="mt-5 flex justify-end pt-4">
+
                                 <button
                                     onClick={() => setSelectedPost(null)}
-                                    className="
-                                    mt-8
-                                    px-6 py-2
-                                    rounded-xl
-                                    bg-orange-300
-                                    text-white
-                                    font-semibold
-                                    hover:bg-orange-500
-                                "
+                                    className="rounded-xl bg-amber-400 cursor-pointer px-6 py-2 font-semibold text-white transition hover:bg-amber-500"
                                 >
                                     Close
                                 </button>
-                            </div>
 
+                            </div>
 
                         </div>
                     </div>

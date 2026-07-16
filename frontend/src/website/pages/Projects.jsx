@@ -73,15 +73,15 @@ export default function Projects() {
 
                 <div className="max-w-4xl mx-auto px-4 text-center">
 
-                    <span className="inline-flex px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold">
+                    <span className="inline-flex px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-xs md:text-sm font-semibold">
                         Project Portfolio
                     </span>
 
-                    <h2 className="mt-5 text-xl md:text-3xl font-bold text-slate-900">
+                    <h2 className="mt-3 md:mt-5 text-lg md:text-3xl font-bold text-slate-900">
                         Driving Positive Change Together
                     </h2>
 
-                    <p className="mt-5 text-slate-600 leading-8">
+                    <p className="mt-3 md:mt-5 text-slate-600 text-sm md:text-base leading-6 md:leading-8">
                         EHE works closely with communities, local authorities,
                         civil society organizations, and development partners
                         to create meaningful and lasting impact.
@@ -92,7 +92,7 @@ export default function Projects() {
             </section>
 
             {/* Projects */}
-            <section className="pb-20">
+            <section className="pb-10 md:pb-20">
 
                 <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -129,20 +129,20 @@ export default function Projects() {
                                         </span>
 
                                         {/* Number */}
-                                        <div className="absolute bottom-6 right-6 text-5xl font-black text-white/20">
+                                        <div className="absolute bottom-6 right-6 text-xl md:text-5xl font-black text-white/20">
                                             {String(index + 1).padStart(2, "0")}
                                         </div>
 
                                     </div>
 
                                     {/* Content */}
-                                    <div className="p-7">
+                                    <div className="p-4 md:p-7">
 
                                         <h3 className="text-lg md:text-xl font-bold text-slate-900 transition group-hover:text-emerald-600 line-clamp-1">
                                             {project.title}
                                         </h3>
 
-                                        <p className="mt-3 text-slate-600 text-xs md:text-sm leading-7 line-clamp-3">
+                                        <p className="mt-3 text-slate-600 text-sm md:text-base leading-6 md:leading-7 line-clamp-3">
                                             {project.description}
                                         </p>
 
@@ -150,7 +150,7 @@ export default function Projects() {
                                         <div className="mt-6 flex items-center justify-between">
 
                                             <button onClick={() => setSelectedProject(project)}
-                                                className="flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-sm font-semibold cursor-pointer text-white transition hover:bg-emerald-700">
+                                                className="flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-xs md:text-sm font-semibold cursor-pointer text-white transition hover:bg-emerald-700">
                                                 Learn More
 
                                                 <svg

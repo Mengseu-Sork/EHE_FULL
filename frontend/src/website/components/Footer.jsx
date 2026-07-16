@@ -14,13 +14,13 @@ import {
 import { NavLink } from "react-router-dom";
 
 const menus = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Our Programs", path: "/programs" },
-    { name: "Our Projects", path: "/projects" },
-    { name: "News & Events", path: "/news" },
-    { name: "Videos", path: "/videos" },
-    { name: "Contact", path: "/contact" },
+    { name: "Home", path: "/kh/home" },
+    { name: "About Us", path: "/kh/about" },
+    { name: "Our Programs", path: "/kh/programs" },
+    { name: "Our Projects", path: "/kh/projects" },
+    { name: "News & Events", path: "/kh/news" },
+    { name: "Videos", path: "/kh/videos" },
+    { name: "Contact", path: "/kh/contact" },
 ];
 
 const socialLinks = [
@@ -47,9 +47,9 @@ import logo from "../../assets/images/logo.jpg";
 export default function Footer() {
     return (
         <footer className="bg-green-900 text-white">
-            <div className="max-w-full mx-auto px-8 lg:px-12 py-16">
+            <div className="max-w-full mx-auto px-8 lg:px-12 py-8 md:py-16">
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
 
                     {/* Organization */}
                     <div>
@@ -57,11 +57,11 @@ export default function Footer() {
                             <img
                                 src={logo}
                                 alt="EHE"
-                                className="w-16 h-16 rounded-full bg-white p-1"
+                                className="w-12 md:w-16 h-12 md:h-16 rounded-full bg-white p-1"
                             />
 
                             <div>
-                                <h3 className="text-2xl font-bold text-white">
+                                <h3 className="text-lg md:text-xl font-bold text-white">
                                     EHE
                                 </h3>
 
@@ -71,7 +71,7 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        <p className="text-green-100 leading-8">
+                        <p className="text-green-100 leading-6 md:leading-8 text-xs md:text-sm">
                             Empowering communities through environmental sustainability,
                             health awareness, and quality education initiatives across Cambodia.
                         </p>
@@ -80,11 +80,11 @@ export default function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="text-xl font-semibold text-[#D4AF37] mb-6">
+                        <h4 className="text-lg md:text-xl font-semibold text-[#D4AF37] mb-6">
                             Quick Links
                         </h4>
 
-                        <ul className="grid grid-cols-2 gap-4 md:gap-6">
+                        <ul className="grid grid-cols-3 md:grid-cols-2 gap-4 md:gap-6 text-xs md:text-sm">
                             {menus.map((menu) => (
                                 <li key={menu.path}>
                                     <NavLink
@@ -105,13 +105,13 @@ export default function Footer() {
 
                     {/* Contact */}
                     <div className="md:col-span-3 lg:col-span-2">
-                        <h4 className="text-xl font-semibold text-[#D4AF37] mb-6">
+                        <h4 className="text-lg md:text-xl font-semibold text-[#D4AF37] mb-3 md:mb-6">
                             Contact Information
                         </h4>
 
-                        <div className="space-y-5">
+                        <div className="space-y-4">
 
-                            <div className="space-y-6">
+                            <div className="space-y-4">
 
                                 {/* Address */}
                                 <a
@@ -122,7 +122,7 @@ export default function Footer() {
                                 >
                                     <MapPinIcon className="w-6 h-6 text-[#D4AF37] flex-shrink-0 mt-1 transition group-hover:scale-110" />
 
-                                    <span className="text-green-100 leading-7 group-hover:text-white transition">
+                                    <span className="text-green-100 leading-7 text-xs md:text-sm group-hover:text-white transition">
                                         Kampong Village, Sangkat Kampong Rotes,
                                         Krong Stung Sen, Kampong Thom Province, Cambodia
                                     </span>
@@ -135,8 +135,20 @@ export default function Footer() {
                                 >
                                     <PhoneIcon className="w-6 h-6 text-[#D4AF37] transition group-hover:scale-110" />
 
-                                    <span className="text-green-100 group-hover:text-white transition">
+                                    <span className="text-green-100 text-xs md:text-sm group-hover:text-white transition">
                                         (+855) 12 673 634
+                                    </span>
+                                </a>
+                                
+                                {/* Phone */}
+                                <a
+                                    href="tel:+85516673634"
+                                    className="flex items-center gap-4 group underline"
+                                >
+                                    <PhoneIcon className="w-6 h-6 text-[#D4AF37] transition group-hover:scale-110" />
+
+                                    <span className="text-green-100 text-xs md:text-sm group-hover:text-white transition">
+                                        (+855) 16 673 634
                                     </span>
                                 </a>
 
@@ -147,7 +159,7 @@ export default function Footer() {
                                 >
                                     <EnvelopeIcon className="w-6 h-6 text-[#D4AF37] transition group-hover:scale-110" />
 
-                                    <span className="text-green-100 break-all group-hover:text-white transition">
+                                    <span className="text-green-100 text-xs md:text-sm break-all group-hover:text-white transition">
                                         eheo.kgthom@gmail.com
                                     </span>
                                 </a>
@@ -155,7 +167,7 @@ export default function Footer() {
                             </div>
                         </div>
 
-                        <div className="flex justify-center md:justify-start gap-3 mt-8">
+                        <div className="flex justify-center md:justify-start gap-3 mt-6">
                             {socialLinks.map((social, index) => {
                                 const Icon = social.icon;
 
@@ -178,8 +190,8 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom */}
-                <div className="border-t border-green-800 mt-12 pt-8 text-center">
-                    <p className="text-green-200 text-sm">
+                <div className="border-t border-green-800 mt-8 pt-6 text-center">
+                    <p className="text-green-200 text-xs md:text-sm">
                         © 2026 Environment & Health Education (EHE).
                     </p>
                 </div>

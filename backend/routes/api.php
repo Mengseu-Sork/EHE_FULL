@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\VisitorController;
 use App\Http\Controllers\Api\VideoController;
+use App\Http\Controllers\Api\NewsArticleController;
 
 // Visitor
 Route::post('/visitor', [VisitorController::class, 'store']);
@@ -31,6 +32,10 @@ Route::get('/projects/{project}', [ProjectController::class, 'show']);
 // Videos
 Route::get('/videos', [VideoController::class, 'index']);
 Route::get('/videos/{video}', [VideoController::class, 'show']);
+
+// News
+Route::get('/news', [NewsArticleController::class, 'index']);
+Route::get('/news/{newsArticle}', [NewsArticleController::class, 'show']);
 
 // Protected routes
 Route::middleware('auth:sanctum')->group(function () {
@@ -63,4 +68,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/videos', [VideoController::class, 'store']);
     Route::put('/videos/{video}', [VideoController::class, 'update']);
     Route::delete('/videos/{video}', [VideoController::class, 'destroy']);
+
+
+    //new
+    Route::post('/news', [NewsArticleController::class, 'store']);
+    Route::put('/news/{newsArticle}', [NewsArticleController::class, 'update']);
+    Route::delete('/news/{newsArticle}', [NewsArticleController::class, 'destroy']);
+    
 });

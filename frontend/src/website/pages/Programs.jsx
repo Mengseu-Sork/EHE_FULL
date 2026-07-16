@@ -90,22 +90,22 @@ export default function ProgramsPage() {
 
                     <div className="max-w-3xl mx-auto text-center">
 
-                        <span className="inline-block px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold tracking-widest uppercase">
+                        <span className="inline-block px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-xs md:text-sm font-semibold tracking-widest uppercase">
                             Our Programs
                         </span>
 
-                        <h2 className="mt-6 text-xl md:text-3xl font-extrabold text-slate-900 leading-tight">
+                        <h2 className="mt-6 text-lg md:text-3xl font-extrabold text-slate-900 leading-7">
                             Building Strong Communities
                             <span className="block text-emerald-600">
                                 Through Sustainable Development
                             </span>
                         </h2>
 
-                        <div className="mt-6 flex justify-center">
+                        <div className="mt-4 md:mt-6 flex justify-center">
                             <div className="w-20 h-1 rounded-full bg-emerald-600"></div>
                         </div>
 
-                        <p className="mt-8 text-lg leading-8 text-slate-600">
+                        <p className="mt-4 md:mt-8 text-sm md:text-base leading-6 md:leading-8 text-slate-600">
                             EHE works alongside local communities to improve education,
                             health, environmental protection, and sustainable livelihoods.
                             Our integrated programs empower children, youth, families,
@@ -119,19 +119,19 @@ export default function ProgramsPage() {
             </section>
 
             {/* Program Areas */}
-            <section className="py-8 bg-white">
+            <section className="py-6 md:py-8 bg-white">
                 <div className="max-w-full mx-auto px-6 lg:px-8">
 
                     <div className="text-center mb-6">
-                        <span className="inline-flex items-center rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-700">
+                        <span className="inline-flex items-center rounded-full bg-emerald-100 px-4 py-2 text-xs md:text-sm font-semibold text-emerald-700">
                             What We Do
                         </span>
 
-                        <h2 className="mt-5 text-xl lg:text-3xl font-bold text-slate-900">
+                        <h2 className="mt-3 md:mt-5 text-lg lg:text-3xl font-bold text-slate-900">
                             Our Program Areas
                         </h2>
 
-                        <p className="mt-6 max-w-3xl mx-auto text-sm md:text-lg text-slate-600 leading-8">
+                        <p className="mt-3 md:mt-6 max-w-3xl mx-auto text-sm md:text-base text-slate-600 leading-6 md:leading-8">
                             We implement integrated community development programs that
                             strengthen livelihoods, improve education and health, conserve
                             natural resources, and empower local communities for a
@@ -167,7 +167,7 @@ export default function ProgramsPage() {
                                         {program.title}
                                     </h3>
 
-                                    <p className="mt-4 leading-7 text-slate-600">
+                                    <p className="mt-2 md:mt-4 text-sm md:text-base leading-7 text-slate-600">
                                         {program.description}
                                     </p>
 

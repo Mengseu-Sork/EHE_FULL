@@ -23,14 +23,14 @@ export default function Programs() {
     ];
 
     return (
-        <section className="py-16 lg:py-24">
+        <section className="py-8 lg:py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-10">
                     <span className="inline-block px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-medium">
                         Our Programs
                     </span>
 
-                    <h2 className="mt-5 text-xl md:text-3xl font-bold text-slate-900">
+                    <h2 className="mt-5 text-lg md:text-3xl font-bold text-slate-900">
                         What We Do
                     </h2>
 
