@@ -12,6 +12,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 import { useEffect, useState } from "react";
 import api from "../../api/api";
@@ -280,28 +281,18 @@ export default function About() {
                         <Swiper
                             modules={[Navigation, Autoplay]}
                             navigation={enableNavigation}
-                            loop={enableLoop}
-                            speed={800}
+                            loop={enableLoop} // Keeps loop disabled for few items to prevent cloning bugs
+                            speed={400}
                             spaceBetween={30}
-                            autoplay={
-                                enableLoop
-                                    ? {
-                                        delay: 4000,
-                                        disableOnInteraction: false,
-                                        pauseOnMouseEnter: true,
-                                    }
-                                    : false
-                            }
+                            autoplay={{
+                                delay: 4000,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            }}
                             breakpoints={{
-                                320: {
-                                    slidesPerView: 1,
-                                },
-                                768: {
-                                    slidesPerView: 2,
-                                },
-                                1200: {
-                                    slidesPerView: 3,
-                                },
+                                320: { slidesPerView: 1 },
+                                768: { slidesPerView: 2 },
+                                1200: { slidesPerView: 3 },
                             }}
                             className="history-swiper"
                         >
