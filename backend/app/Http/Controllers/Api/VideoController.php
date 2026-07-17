@@ -26,7 +26,7 @@ class VideoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'video_file' => 'required|mimes:mp4,mov,avi,mkv,webm|max:51200',
+            'video_file' => 'required|mimes:mp4,mov,avi,mkv,webm|max:512000',
         ]);
 
         $path = $request->file('video_file')->store('videos', 'public');
@@ -56,7 +56,7 @@ class VideoController extends Controller
     public function update(Request $request, Video $video)
     {
         $request->validate([
-            'video_file' => 'nullable|mimes:mp4,mov,avi,mkv,webm|max:51200',
+            'video_file' => 'nullable|mimes:mp4,mov,avi,mkv,webm|max:512000',
         ]);
 
         if ($request->hasFile('video_file')) {

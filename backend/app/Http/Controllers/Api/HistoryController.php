@@ -14,7 +14,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $histories = History::latest()->get()->map(function ($history) {
+        $histories = History::orderBy('id', 'asc')->get()->map(function ($history) {
             return [
                 'id' => $history->id,
                 'year' => $history->year,

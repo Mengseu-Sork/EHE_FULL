@@ -108,7 +108,7 @@ export default function Video() {
 
                 ) : (
 
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-4">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
 
                         {videos.map((video) => (
 
@@ -120,7 +120,7 @@ export default function Video() {
                                 <video
                                     controls
                                     preload="metadata"
-                                    className="h-64 w-full object-cover"
+                                    className="h-full w-full object-cover"
                                     src={`${storageUrl}/${video.video_file}`}
                                 />
 
