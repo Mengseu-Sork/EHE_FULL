@@ -22,7 +22,7 @@ export default function AdminLayout() {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
 
-        navigate("/admin/login");
+        navigate("/kh/admin/login");
     };
 
     const menu = [

@@ -36,7 +36,7 @@ export default function Login() {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user", JSON.stringify(res.data.user));
 
-            navigate("/admin/dashboard");
+            navigate("/kh/admin/dashboard");
         } catch (err) {
             if (err.response) {
                 setError(err.response.data.message || "Login failed.");
