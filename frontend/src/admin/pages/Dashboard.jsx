@@ -27,13 +27,15 @@ export default function Dashboard() {
         projects: 0,
         supporters: 0,
         histories: 0,
+
         videos: 0,
+        news: 0,
 
         total_visitors: 0,
         today_visitors: 0,
         this_month_visitors: 0,
 
-        visitor_chart: [],
+        dashboard_chart: [],
     });
 
     useEffect(() => {
@@ -87,7 +89,7 @@ export default function Dashboard() {
         },
         {
             title: "News & Events",
-            value: stats.videos,
+            value: stats.news,
             bg: "bg-amber-100",
             text: "text-amber-600",
             icon: NewspaperIcon,
@@ -331,22 +333,24 @@ export default function Dashboard() {
                 <div className="flex flex-col gap-4 border-b p-6 md:flex-row md:items-center md:justify-between">
                     <div className="flex items-center gap-4">
 
-                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg">
+                        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 shadow-lg">
 
-                            <PresentationChartLineIcon className="h-7 w-7 text-white" />
+                            <PresentationChartLineIcon className="h-10 w-10 text-white" />
 
                         </div>
 
                         <div>
-
                             <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-700">
                                 Analytics
                             </span>
 
                             <h2 className="mt-2 text-2xl font-bold text-green-800">
-                                Visitor Analytics
+                                Website Analytics
                             </h2>
 
+                            <p className="mt-1 text-sm text-slate-500">
+                                Monthly visitors and news publication trends
+                            </p>
                         </div>
 
                     </div>
@@ -374,7 +378,7 @@ export default function Dashboard() {
                 <div className="p-6">
 
                     <VisitorChart
-                        data={stats.visitor_chart}
+                        data={stats.dashboard_chart}
                     />
 
                 </div>

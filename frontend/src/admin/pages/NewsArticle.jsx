@@ -28,7 +28,9 @@ export default function NewsArticle() {
 
       const res = await api.get("/news");
 
-      setNews(res.data);
+      console.log("API Response:", res.data);
+
+      setNews(Array.isArray(res.data) ? res.data : res.data.data || []);
 
     } catch (error) {
 

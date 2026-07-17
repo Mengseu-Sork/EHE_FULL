@@ -19,6 +19,7 @@ export default function NewsTable({
     onDelete,
 }) {
 
+    const list = Array.isArray(news) ? news : [];
     const [openMenu, setOpenMenu] = useState(null);
     const menuRef = useRef(null);
     useEffect(() => {
@@ -85,7 +86,7 @@ export default function NewsTable({
 
                 <span className="rounded-full bg-green-800/40 px-4 py-1 text-sm font-semibold text-white">
 
-                    {news.length} Records
+                    {list.length} Records
 
                 </span>
 
@@ -131,7 +132,7 @@ export default function NewsTable({
 
                     <tbody className="divide-y divide-gray-100">
 
-                        {news.length === 0 && (
+                        {list.length === 0 && (
 
                             <tr>
 
@@ -160,7 +161,7 @@ export default function NewsTable({
 
                         )}
 
-                        {news.map((item) => (
+                        {list.map((item) => (
 
                             <tr
                                 key={item.id}

@@ -6,48 +6,33 @@ export default function VisitorChart({ data = [] }) {
         chart: {
             type: "area",
             height: 420,
-            background: "transparent",
-
             toolbar: {
                 show: false,
             },
-
             zoom: {
                 enabled: false,
             },
-
             animations: {
                 enabled: true,
                 easing: "easeinout",
-                speed: 1200,
+                speed: 1000,
             },
         },
 
-        theme: {
-            mode: "light",
-        },
-
-        colors: ["green"],
+        colors: ["#10B981", "#3B82F6"],
 
         stroke: {
             curve: "smooth",
-            width: 2,
-            lineCap: "round",
+            width: 3,
         },
 
         fill: {
             type: "gradient",
-
             gradient: {
                 shade: "light",
-                type: "vertical",
-
-                shadeIntensity: 0.6,
-
-                opacityFrom: 0.45,
+                opacityFrom: 0.35,
                 opacityTo: 0,
-
-                stops: [0, 90, 100],
+                stops: [0, 100],
             },
         },
 
@@ -56,45 +41,30 @@ export default function VisitorChart({ data = [] }) {
         },
 
         markers: {
-            size: 0,
-
+            size: 4,
             hover: {
                 size: 7,
             },
         },
 
         grid: {
-            borderColor: "#F1F5F9",
-            strokeDashArray: 6,
-            xaxis: {
-                lines: {
-                    show: false,
-                },
-            },
+            borderColor: "#E5E7EB",
+            strokeDashArray: 5,
         },
 
         xaxis: {
-
             categories: data.map(item => item.month),
 
             labels: {
                 style: {
                     colors: "#64748B",
-                    fontSize: "14px",
-                    fontWeight: 600,
+                    fontSize: "13px",
                 },
-            },
-
-            axisBorder: {
-                show: false,
-            },
-
-            axisTicks: {
-                show: false,
             },
         },
 
         yaxis: {
+            min: 0,
 
             labels: {
                 style: {
@@ -104,31 +74,25 @@ export default function VisitorChart({ data = [] }) {
         },
 
         tooltip: {
-
             shared: true,
-
             intersect: false,
-
-            theme: "light",
-
-            style: {
-                fontSize: "14px",
-            },
-
-            y: {
-                formatter: value => `${value} Visitors`,
-            },
         },
 
         legend: {
-            show: false,
+            show: true,
+            position: "top",
+            horizontalAlign: "right",
         },
     };
 
     const series = [
         {
             name: "Visitors",
-            data: data.map(item => item.total),
+            data: data.map(item => item.visitors),
+        },
+        {
+            name: "News",
+            data: data.map(item => item.news),
         },
     ];
 

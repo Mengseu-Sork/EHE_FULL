@@ -65,18 +65,6 @@ export default function NewsView({ news, onClose }) {
 
                     <div>
 
-                        <div className="mb-4 flex items-center gap-2">
-
-                            <FaImages className="text-green-600" />
-
-                            <h3 className="text-lg font-semibold">
-
-                                Images
-
-                            </h3>
-
-                        </div>
-
                         {news.images?.length ? (
 
                             <Swiper

@@ -30,23 +30,20 @@ export default function CTA() {
     }, []);
 
     const loadPosts = async () => {
-
         try {
-
             const res = await api.get("/news?limit=4");
 
-            setPosts(res.data);
+            const data = Array.isArray(res.data)
+                ? res.data
+                : res.data.data || [];
 
-        } catch (error) {
-
-            console.error(error);
-
+            setPosts(data);
+        } catch (err) {
+            console.error(err);
+            setPosts([]);
         } finally {
-
             setLoading(false);
-
         }
-
     };
 
     return (
@@ -173,7 +170,7 @@ export default function CTA() {
                 {/* View All Button */}
                 <div className="text-center mt-6 md:mt-12">
                     <Link
-                        to="/news"
+                        to="/kh/news"
                         className="
                             inline-flex
                             items-center
