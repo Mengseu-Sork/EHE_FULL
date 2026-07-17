@@ -37,7 +37,7 @@ export default function Hero() {
                         </button>
 
                         <button
-                            onClick={() => navigate("/about")}
+                            onClick={() => navigate("/kh/about")}
                             className="px-4 md:px-8 py-2 md:py-4 text-xs md:text-sm border border-white/30 text-white rounded-xl backdrop-blur cursor-pointer">
                             Learn More
                         </button>
