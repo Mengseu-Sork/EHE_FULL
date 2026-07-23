@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../api/api";
-import Header from "../components/header";
+import Header from "../components/Header";
 
 export default function Video() {
     const [videos, setVideos] = useState([]);

@@ -13,7 +13,7 @@ import {
 import api from "../../api/api";
 import { useEffect, useState, React } from "react";
 
-import Header from "../components/header";
+import Header from "../components/Header";
 
 export default function ProgramsPage() {
 
