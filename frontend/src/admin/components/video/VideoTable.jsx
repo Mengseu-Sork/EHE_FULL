@@ -24,7 +24,7 @@ export default function VideoTable({
     }
 
     return (
-        <div className="h-[70vh] overflow-auto">
+        <div className="h-[75vh] overflow-auto">
             {videos.length === 0 ? (
                 <div className="rounded-3xl border border-dashed border-slate-300 bg-white py-24">
 
@@ -48,7 +48,7 @@ export default function VideoTable({
 
                 </div>
             ) : (
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {videos.map((video, index) => (
                         <VideoCard
                             key={video.id}

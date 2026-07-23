@@ -16,27 +16,7 @@ export default function HistoryTable({
     onDelete,
 }) {
     const [openMenu, setOpenMenu] = useState(null);
-    const menuRef = useRef(null);
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                menuRef.current &&
-                !menuRef.current.contains(event.target)
-            ) {
-                setOpenMenu(null);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener(
-                "mousedown",
-                handleClickOutside
-            );
-        };
-    }, []);
 
     return (
         <div className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-lg">
@@ -89,10 +69,6 @@ export default function HistoryTable({
 
                             <th className="px-6 py-4 text-left">
                                 Description
-                            </th>
-
-                            <th className="px-6 py-4 text-center">
-                                Status
                             </th>
 
                             <th className="px-6 py-4 text-center">
@@ -166,7 +142,7 @@ export default function HistoryTable({
 
                                     <td className="px-6 py-2">
 
-                                        <div className="w-[450px] line-clamp-1 text-sm leading-6 text-gray-600">
+                                        <div className="w-[350px] line-clamp-1 text-sm leading-6 text-gray-600">
 
                                             {item.description}
 
@@ -174,38 +150,10 @@ export default function HistoryTable({
 
                                     </td>
 
-                                    {/* Status */}
-
-                                    <td className="px-6 py-2 text-center">
-
-                                        {item.is_active ? (
-
-                                            <span className="inline-flex items-center gap-2 rounded-full bg-green-100 px-4 py-2 text-xs font-semibold text-green-700">
-
-                                                <span className="h-2.5 w-2.5 rounded-full bg-green-600"></span>
-
-                                                Active
-
-                                            </span>
-
-                                        ) : (
-
-                                            <span className="inline-flex items-center gap-2 rounded-full bg-red-100 px-4 py-2 text-sm font-semibold text-red-700">
-
-                                                <span className="h-2.5 w-2.5 rounded-full bg-red-600"></span>
-
-                                                Inactive
-
-                                            </span>
-
-                                        )}
-
-                                    </td>
-
                                     {/* Actions */}
                                     <td className="relative px-6 py-2">
 
-                                        <div ref={menuRef} className="flex justify-center">
+                                        <div className="flex justify-center">
 
                                             <button
                                                 onClick={() =>

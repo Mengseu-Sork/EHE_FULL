@@ -54,11 +54,11 @@ export default function CTA() {
                 <div className="text-center max-w-3xl mx-auto mb-8 lg:mb-16">
 
                     <span className="inline-block px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold">
-                        Stories From The Community
+                        Activity From The Community
                     </span>
 
                     <h2 className="mt-5 text-lg md:text-3xl lg:text-4xl font-bold text-slate-900">
-                        Our Latest Impact
+                        Our Latest Activity
                     </h2>
 
                     <p className="mt-4 text-sm md:text-lg text-slate-600">
@@ -184,7 +184,7 @@ export default function CTA() {
                             transition
                         "
                     >
-                        View All Stories
+                        View All
                     </Link>
                 </div>
 

@@ -158,9 +158,9 @@ export default function Videos() {
 
                     <div className="flex items-start gap-5">
 
-                        <div className="rounded-3xl bg-gray-100 p-5 backdrop-blur">
+                        <div className="rounded-2xl bg-gray-100 p-3 backdrop-blur">
 
-                            <PlayCircleIcon className="h-16 w-16 text-green-800" />
+                            <PlayCircleIcon className="h-12 w-12 text-green-800" />
 
                         </div>
 
@@ -170,14 +170,9 @@ export default function Videos() {
                                 Video Management
                             </span>
 
-                            <h1 className="mt-4 text-3xl font-black">
+                            <h1 className="mt-4 text-2xl font-black">
                                 Videos
                             </h1>
-
-                            <p className="mt-3 max-w-2xl text-red-100">
-                                Manage uploaded videos for your website.
-                            </p>
-
                         </div>
 
                     </div>

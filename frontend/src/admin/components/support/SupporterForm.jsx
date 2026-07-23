@@ -16,6 +16,8 @@ export default function SupporterForm({
 }) {
     const [form, setForm] = useState({
         name: "",
+        category: "",
+        description: "",
         website: "",
         is_active: true,
     });
@@ -26,6 +28,8 @@ export default function SupporterForm({
         if (editing) {
             setForm({
                 name: editing.name || "",
+                category: editing.category || "",
+                description: editing.description || "",
                 website: editing.website || "",
                 is_active: editing.is_active,
             });
@@ -38,6 +42,8 @@ export default function SupporterForm({
         const data = new FormData();
 
         data.append("name", form.name);
+        data.append("category", form.category);
+        data.append("description", form.description);
         data.append("website", form.website);
         data.append(
             "is_active",
@@ -110,7 +116,7 @@ export default function SupporterForm({
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
 
-            <div className="w-full max-w-3xl rounded-2xl bg-white shadow-2xl">
+            <div className="w-full max-w-3xl rounded-2xl overflow-auto h-[90vh] bg-white shadow-2xl">
 
                 {/* Header */}
 
@@ -249,7 +255,7 @@ export default function SupporterForm({
                             <div>
 
                                 <label className="mb-2 block text-sm font-semibold text-gray-700">
-                                    Supporter Name
+                                    Supporter Name *
                                 </label>
 
                                 <input
@@ -266,6 +272,29 @@ export default function SupporterForm({
                                     required
                                 />
 
+                            </div>
+
+                            <div>
+                                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                                    Category *
+                                </label>
+
+                                <select
+                                    value={form.category}
+                                    onChange={(e) =>
+                                        setForm({
+                                            ...form,
+                                            category: e.target.value,
+                                        })
+                                    }
+                                    className="w-full rounded-xl border border-gray-300 px-4 py-3"
+                                    required
+                                >
+                                    <option value="">Select Category</option>
+                                    <option value="Partner">Partner</option>
+                                    <option value="Donor">Donor</option>
+                                    <option value="NGO Network">NGO Network</option>
+                                </select>
                             </div>
 
                             {/* Website */}
@@ -289,6 +318,26 @@ export default function SupporterForm({
                                     placeholder="https://example.org"
                                 />
 
+                            </div>
+
+
+                            <div>
+                                <label className="mb-2 block text-sm font-semibold text-gray-700">
+                                    Description
+                                </label>
+
+                                <textarea
+                                    rows={2}
+                                    value={form.description}
+                                    onChange={(e) =>
+                                        setForm({
+                                            ...form,
+                                            description: e.target.value,
+                                        })
+                                    }
+                                    className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 transition focus:border-green-600 focus:outline-none focus:ring-4 focus:ring-green-100"
+                                    placeholder="Organization description..."
+                                />
                             </div>
 
                             {/* Status */}

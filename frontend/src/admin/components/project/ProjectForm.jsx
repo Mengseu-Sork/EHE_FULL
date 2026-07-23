@@ -148,15 +148,12 @@ export default function ProjectForm({
     };
 
     const categories = [
-        "Environment",
-        "Community",
-        "Education",
-        "Health",
-        "Livelihood",
-        "Natural Resource Protection",
-        "Community Development",
-        "Education & Health",
-        "Capacity Building",
+        "Community-Based Organizations",
+        "Sustainable Livelihoods",
+        "Natural Resource Management",
+        "Education & Community Health",
+        "Community Networks & Advocacy",
+        "Partnership & Policy Engagement",
     ];
 
     if (!open) return null;

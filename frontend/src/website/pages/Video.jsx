@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../api/api";
-import bg from "../../assets/images/about/icon1.jpg";
+import Header from "../components/header";
 
 export default function Video() {
     const [videos, setVideos] = useState([]);
@@ -47,37 +47,7 @@ export default function Video() {
             `}</style>
 
             {/* Hero */}
-            <section
-                className="relative h-[40vh] lg:h-[70vh] flex items-center justify-start bg-cover bg-center"
-                style={{ backgroundImage: `url(${bg})` }}
-            >
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
-
-                <div className="relative max-w-7xl mx-auto px-6 w-full">
-                    <div className="max-w-3xl">
-                        <span className="inline-flex px-4 py-2 rounded-full text-[10px] md:text-xs bg-emerald-500/20 border border-emerald-400/30 text-emerald-100">
-                            Videos
-                        </span>
-
-                        <h1 className="mt-2 md:mt-6 text-xl md:text-5xl font-bold text-white leading-tight">
-                            Environment &
-                            <span className="block text-emerald-400">
-                                Health Education
-                            </span>
-                        </h1>
-
-                        {/* Description */}
-                        <p className="mt-2 md:mt-8 max-w-2xl text-sm leading-7 text-slate-200 md:text-lg">
-
-                            EHE works alongside communities across Cambodia to protect
-                            natural resources, strengthen local leadership, improve
-                            livelihoods, and promote health and education for sustainable
-                            development.
-
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <Header />
 
             {/* Videos */}
             <section className="mx-auto max-w-full px-4 md:px-8 py-8 md:py-12">
@@ -108,7 +78,7 @@ export default function Video() {
 
                 ) : (
 
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 
                         {videos.map((video) => (
 

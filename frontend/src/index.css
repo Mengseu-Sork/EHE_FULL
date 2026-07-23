@@ -42,6 +42,9 @@ body {
     animation: marquee 25s linear infinite;
 }
 
+iframe {
+    overflow: hidden;
+}
 
 @media (max-width: 768px) {
     .history-swiper .swiper-button-prev,

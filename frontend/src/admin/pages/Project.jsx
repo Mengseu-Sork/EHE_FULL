@@ -22,6 +22,9 @@ export default function Project() {
 
     const [viewProject, setViewProject] = useState(null);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 8;
+
     useEffect(() => {
         loadProjects();
     }, []);
@@ -55,6 +58,13 @@ export default function Project() {
             );
         });
     }, [projects, search]);
+
+    const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
+
+    const currentProjects = useMemo(() => {
+        const start = (currentPage - 1) * itemsPerPage;
+        return filteredProjects.slice(start, start + itemsPerPage);
+    }, [filteredProjects, currentPage]);
 
     const handleCreate = () => {
         setEditingProject(null);
@@ -108,7 +118,7 @@ export default function Project() {
     };
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-4">
 
             {/* Header */}
             <div className="rounded-3xl border border-slate-200 bg-gradient-to-r from-white via-emerald-50 to-white p-6 shadow-sm">
@@ -135,7 +145,7 @@ export default function Project() {
                         </div>
 
                         <div>
-                            <h1 className="text-3xl font-bold text-green-700">
+                            <h1 className="text-2xl font-bold text-green-700">
                                 Project Management
                             </h1>
 
@@ -171,7 +181,11 @@ export default function Project() {
                     type="text"
                     placeholder="Search projects..."
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => {
+                        setSearch(e.target.value);
+                        setCurrentPage(1);
+                    }}
+
                     className="w-full rounded-xl border border-gray-300 py-3 pl-12 pr-4 focus:border-emerald-600 focus:outline-none"
                 />
 
@@ -180,11 +194,54 @@ export default function Project() {
             {/* Table */}
             <ProjectTable
                 loading={loading}
-                projects={filteredProjects}
+                projects={currentProjects}
                 onView={handleView}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
             />
+
+            {totalPages > 1 && (
+                <div className="mt-2 flex items-center justify-between p-2">
+                    <p className="text-sm text-gray-500">
+                        Showing{" "}
+                        {(currentPage - 1) * itemsPerPage + 1}
+                        –
+                        {Math.min(currentPage * itemsPerPage, filteredProjects.length)}
+                        {" "}of {filteredProjects.length} projects
+                    </p>
+
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => setCurrentPage((p) => p - 1)}
+                            disabled={currentPage === 1}
+                            className="rounded-lg border text-xs px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50 hover:bg-gray-100"
+                        >
+                            Previous
+                        </button>
+
+                        {Array.from({ length: totalPages }, (_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setCurrentPage(i + 1)}
+                                className={`h-10 w-10 rounded-lg text-xs font-medium transition ${currentPage === i + 1
+                                    ? "bg-emerald-600 text-white"
+                                    : "border hover:bg-gray-100"
+                                    }`}
+                            >
+                                {i + 1}
+                            </button>
+                        ))}
+
+                        <button
+                            onClick={() => setCurrentPage((p) => p + 1)}
+                            disabled={currentPage === totalPages}
+                            className="rounded-lg border px-3 py-2 text-xs disabled:cursor-not-allowed disabled:opacity-50 hover:bg-gray-100"
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+            )}
 
             {/* Create / Edit */}
             <ProjectForm

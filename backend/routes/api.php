@@ -10,6 +10,20 @@ use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\VisitorController;
 use App\Http\Controllers\Api\VideoController;
 use App\Http\Controllers\Api\NewsArticleController;
+use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\DocumentController;
+use App\Http\Controllers\Api\StoryController;
+
+// Stories
+Route::get('/stories', [StoryController::class, 'index']);
+Route::get('/stories/{story}', [StoryController::class, 'show']);
+
+// Documents
+Route::get('/documents', [DocumentController::class, 'index']);
+Route::get('/documents/{document}', [DocumentController::class, 'show']);
+
+// Contact
+Route::post('/contact', [ContactController::class, 'send']);
 
 // Visitor
 Route::post('/visitor', [VisitorController::class, 'store']);
@@ -42,7 +56,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    
+
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
@@ -74,5 +88,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/news', [NewsArticleController::class, 'store']);
     Route::put('/news/{newsArticle}', [NewsArticleController::class, 'update']);
     Route::delete('/news/{newsArticle}', [NewsArticleController::class, 'destroy']);
-    
+
+
+    // Document CRUD
+    Route::post('/documents', [DocumentController::class, 'store']);
+    Route::put('/documents/{document}', [DocumentController::class, 'update']);
+    Route::delete('/documents/{document}', [DocumentController::class, 'destroy']);
+
+
+    // Story CRUD
+    Route::post('/stories', [StoryController::class, 'store']);
+    Route::put('/stories/{story}', [StoryController::class, 'update']);
+    Route::delete('/stories/{story}', [StoryController::class, 'destroy']);
 });

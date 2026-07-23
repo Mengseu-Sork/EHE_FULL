@@ -3,28 +3,34 @@ import ProgramCard from "./ProgramCard";
 export default function Programs() {
     const programs = [
         {
-            title: "Natural Resource Protection",
+            title: "Community-Based Organizations",
             color: "border-emerald-500",
             description:
-                "Supporting communities to protect forests, biodiversity, land, and natural resources for future generations.",
+                "Strengthening community leadership, governance, and organizational capacity to enable communities to manage their own development.",
         },
         {
-            title: "Community Development",
+            title: "Self-Reliant Economic Development",
             color: "border-blue-500",
             description:
-                "Strengthening local leadership, community participation, and sustainable livelihoods across Cambodia.",
+                "Promoting sustainable agriculture, community enterprises, food security, and climate-resilient livelihoods for rural communities.",
         },
         {
-            title: "Health & Education",
+            title: "Community Networks & Campaign Action",
             color: "border-amber-500",
             description:
-                "Promoting health awareness, sanitation, and access to quality education for vulnerable communities.",
+                "Supporting collective action, advocacy, and community participation to protect land, forests, natural resources, and human rights.",
+        },
+        {
+            title: "Partnership & Policy Advocacy",
+            color: "border-purple-500",
+            description:
+                "Collaborating with civil society organizations, government partners, and stakeholders to promote inclusive and sustainable development.",
         },
     ];
 
     return (
         <section className="py-8 lg:py-16">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-10">
                     <span className="inline-block px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 font-medium">
                         Our Programs
@@ -41,7 +47,7 @@ export default function Programs() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                     {programs.map((program, index) => (
                         <ProgramCard
                             key={index}

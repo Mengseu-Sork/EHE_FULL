@@ -1,4 +1,4 @@
-import bg from "../../assets/images/new.jpg";
+import Header from "../components/header";
 
 import { useEffect, useState } from "react";
 import api from "../../api/api";
@@ -55,49 +55,22 @@ export default function News() {
     ...new Set(posts.map((post) => post.category).filter(Boolean)),
   ];
 
-  if (loading) {
-    return (
-      <div className="flex justify-center py-20">
-        Loading...
-      </div>
-    );
-  }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
 
       {/* Hero */}
-      <section
-        className="relative h-[40vh] lg:h-[70vh] flex items-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${bg})` }}
-      >
-        {/* Dark overlay for text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/20" />
-
-        <div className="relative max-w-7xl mx-auto px-6 sm:px-8 md:px-10 w-full">
-          {/* Badge */}
-          <span className="inline-flex items-center rounded-full bg-emerald-500/20 border border-emerald-400/30 px-4 py-1 text-[10px] md:text-xs font-medium text-emerald-100 backdrop-blur">
-            Latest Stories
-          </span>
-
-          {/* Title */}
-          <h1 className="mt-6 text-xl md:text-5xl font-extrabold tracking-tight text-white leading-tight max-w-3xl">
-            News &
-            <span className="text-emerald-400"> Updates</span>
-          </h1>
-
-          {/* Description */}
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-200">
-            Stay informed about our latest projects, community impact,
-            success stories, and important announcements as we continue
-            working toward a more sustainable future.
-          </p>
-        </div>
-      </section>
+      <Header />
 
       {/* Category Select */}
       <section className="bg-white border-b border-gray-100">
         <div className="max-w-full mx-auto px-4 sm:px-6 py-4 sm:py-6">
+          {/* Title */}
+          <div className="mb-4">
+            <h3 className="text-lg font-bold text-slate-900">
+              Filter activity
+            </h3>
+          </div>
           <div className="relative w-full max-w-sm">
             <select
               value={activeCategory}
@@ -153,7 +126,7 @@ export default function News() {
       </section>
 
       {/* Cards */}
-      <section className="px-4 sm:px-6 py-8 sm:py-10">
+      <section className="px-4 sm:px-6 py-8">
         <div className="max-w-full mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6">
 
           {filtered.map((post) => (
@@ -199,7 +172,7 @@ export default function News() {
                                         text-white
                                         px-3 py-1.5
                                         rounded-full
-                                        text-xs md:text-sm
+                                        text-xs
                                         font-semibold
                                     "
                 >

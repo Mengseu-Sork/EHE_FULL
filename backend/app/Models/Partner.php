@@ -8,6 +8,8 @@ class Partner extends Model
 {
     protected $fillable = [
         'name',
+        'category',
+        'description',
         'logo',
         'website',
         'is_active',

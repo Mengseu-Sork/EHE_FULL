@@ -17,24 +17,6 @@ export default function ProjectTable({
 
     const [openMenu, setOpenMenu] = useState(null);
 
-    const menuRef = useRef(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (
-                menuRef.current &&
-                !menuRef.current.contains(event.target)
-            ) {
-                setOpenMenu(null);
-            }
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
 
     const statusColors = {
         Active: "bg-green-100 text-green-700",
@@ -83,7 +65,7 @@ export default function ProjectTable({
                 </p>
             </div>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-auto">
 
                 <table className="w-full">
 
@@ -140,7 +122,7 @@ export default function ProjectTable({
                                     />
                                 </td>
 
-                                <td className="w-[450px] px-6 py-2">
+                                <td className="w-[350px] px-6 py-2">
 
                                     <div className="flex items-center gap-4">
 
@@ -186,7 +168,7 @@ export default function ProjectTable({
 
                                 <td className="relative px-6 py-2">
 
-                                    <div ref={menuRef} className="flex justify-center">
+                                    <div className="flex justify-center">
 
                                         <button
                                             onClick={() =>

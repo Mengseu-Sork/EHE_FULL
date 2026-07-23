@@ -18,6 +18,8 @@ class PartnerController extends Controller
             return [
                 'id' => $partner->id,
                 'name' => $partner->name,
+                'category' => $partner->category,
+                'description' => $partner->description,
                 'website' => $partner->website,
                 'is_active' => $partner->is_active,
                 'logo' => $partner->logo
@@ -37,6 +39,8 @@ class PartnerController extends Controller
     {
         $validated = $request->validate([
             'name'      => 'required|string|max:255',
+            'category'    => 'required|string|max:100',
+            'description' => 'nullable|string',
             'website'   => 'nullable|url|max:255',
             'is_active' => 'nullable|boolean',
             'logo'      => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
@@ -50,6 +54,8 @@ class PartnerController extends Controller
 
         $partner = Partner::create([
             'name'      => $validated['name'],
+            'category'    => $validated['category'],
+            'description' => $validated['description'] ?? null,
             'website'   => $validated['website'] ?? null,
             'is_active' => $validated['is_active'] ?? true,
             'logo'      => $validated['logo'],
@@ -60,6 +66,8 @@ class PartnerController extends Controller
             'data'    => [
                 'id' => $partner->id,
                 'name' => $partner->name,
+                'category' => $partner->category,
+                'description' => $partner->description,
                 'website' => $partner->website,
                 'is_active' => $partner->is_active,
                 'logo' => $partner->logo
@@ -79,6 +87,8 @@ class PartnerController extends Controller
         return response()->json([
             'id' => $partner->id,
             'name' => $partner->name,
+            'category' => $partner->category,
+            'description' => $partner->description,
             'website' => $partner->website,
             'is_active' => $partner->is_active,
             'logo' => $partner->logo
@@ -98,6 +108,8 @@ class PartnerController extends Controller
 
         $validated = $request->validate([
             'name'      => 'required|string|max:255',
+            'category'    => 'required|string|max:100',
+            'description' => 'nullable|string',
             'website'   => 'nullable|url|max:255',
             'is_active' => 'nullable|boolean',
             'logo'      => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
@@ -119,6 +131,8 @@ class PartnerController extends Controller
 
         $partner->update([
             'name'      => $validated['name'],
+            'category'    => $validated['category'],
+            'description' => $validated['description'] ?? null,
             'website'   => $validated['website'] ?? null,
             'is_active' => $validated['is_active'] ?? true,
             'logo'      => $validated['logo'] ?? $partner->logo,
@@ -129,6 +143,8 @@ class PartnerController extends Controller
             'data'    => [
                 'id' => $partner->id,
                 'name' => $partner->name,
+                'category' => $partner->category,
+                'description' => $partner->description,
                 'website' => $partner->website,
                 'is_active' => $partner->is_active,
                 'logo' => $partner->logo

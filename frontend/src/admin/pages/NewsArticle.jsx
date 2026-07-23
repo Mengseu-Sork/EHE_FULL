@@ -20,6 +20,9 @@ export default function NewsArticle() {
 
   const [showForm, setShowForm] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
   const loadData = async () => {
 
     try {
@@ -140,6 +143,13 @@ export default function NewsArticle() {
 
   };
 
+  const totalPages = Math.ceil(news.length / itemsPerPage);
+
+  const currentNews = news.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   return (
 
     <div>
@@ -158,7 +168,7 @@ export default function NewsArticle() {
 
           <div>
 
-            <h1 className="text-3xl font-bold text-green-800">
+            <h1 className="text-2xl font-bold text-green-800">
 
               News Management
 
@@ -190,11 +200,51 @@ export default function NewsArticle() {
 
         <NewsTable
           loading={loading}
-          news={news}
+          news={currentNews}
           onView={viewNews}
           onEdit={editNews}
           onDelete={deleteNews}
         />
+
+        {totalPages > 1 && (
+          <div className="flex items-center justify-between mt-2 p-2">
+            <p className="text-sm text-gray-500">
+              Showing {(currentPage - 1) * itemsPerPage + 1}–
+              {Math.min(currentPage * itemsPerPage, news.length)} of {news.length}
+            </p>
+
+            <div className="flex items-center gap-2">
+              <button
+                disabled={currentPage === 1}
+                onClick={() => setCurrentPage((p) => p - 1)}
+                className="rounded-lg border px-3 py-2 text-xs hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Previous
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i + 1)}
+                  className={`h-10 w-10 rounded-lg text-xs font-medium transition ${currentPage === i + 1
+                      ? "bg-green-600 text-white"
+                      : "border hover:bg-gray-100"
+                    }`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+
+              <button
+                disabled={currentPage === totalPages}
+                onClick={() => setCurrentPage((p) => p + 1)}
+                className="rounded-lg border px-3 py-2 text-xs hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
 
       </div>
 

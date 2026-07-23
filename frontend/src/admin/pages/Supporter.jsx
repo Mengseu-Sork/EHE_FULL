@@ -20,6 +20,9 @@ export default function Supporter() {
 
     const [viewItem, setViewItem] = useState(null);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
+
     useEffect(() => {
         loadSupporters();
     }, []);
@@ -71,6 +74,13 @@ export default function Supporter() {
         }
     };
 
+    const totalPages = Math.ceil(supporters.length / itemsPerPage);
+
+    const currentSupporters = supporters.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
     return (
         <div className="space-y-4">
 
@@ -90,7 +100,7 @@ export default function Supporter() {
 
                     <div>
 
-                        <h1 className="text-3xl font-bold text-gray-800">
+                        <h1 className="text-2xl font-bold text-gray-800">
                             Supporters
                         </h1>
 
@@ -125,7 +135,7 @@ export default function Supporter() {
             {/* Table */}
 
             <SupporterTable
-                supporters={supporters}
+                supporters={currentSupporters}
                 onView={(item) => setViewItem(item)}
                 onEdit={(item) => {
                     setEditing(item);
@@ -133,6 +143,47 @@ export default function Supporter() {
                 }}
                 onDelete={handleDelete}
             />
+
+            {totalPages > 1 && (
+                <div className="mt-2 flex items-center justify-between rounded-b-2xl border-t bg-white p-2">
+                    <p className="text-sm text-gray-500">
+                        Showing {(currentPage - 1) * itemsPerPage + 1}–
+                        {Math.min(currentPage * itemsPerPage, supporters.length)} of{" "}
+                        {supporters.length}
+                    </p>
+
+                    <div className="flex items-center gap-2">
+                        <button
+                            onClick={() => setCurrentPage((p) => p - 1)}
+                            disabled={currentPage === 1}
+                            className="rounded-lg border px-3 py-2 text-xs transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            Previous
+                        </button>
+
+                        {Array.from({ length: totalPages }, (_, i) => (
+                            <button
+                                key={i}
+                                onClick={() => setCurrentPage(i + 1)}
+                                className={`h-10 w-10 rounded-lg text-xs font-medium transition ${currentPage === i + 1
+                                        ? "bg-green-600 text-white"
+                                        : "border hover:bg-gray-100"
+                                    }`}
+                            >
+                                {i + 1}
+                            </button>
+                        ))}
+
+                        <button
+                            onClick={() => setCurrentPage((p) => p + 1)}
+                            disabled={currentPage === totalPages}
+                            className="rounded-lg border px-3 py-2 text-xs transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            Next
+                        </button>
+                    </div>
+                </div>
+            )}
 
             {/* Form */}
 

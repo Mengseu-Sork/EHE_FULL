@@ -21,30 +21,6 @@ export default function NewsTable({
 
     const list = Array.isArray(news) ? news : [];
     const [openMenu, setOpenMenu] = useState(null);
-    const menuRef = useRef(null);
-    useEffect(() => {
-
-        const handleClickOutside = (event) => {
-
-            if (
-                menuRef.current &&
-                !menuRef.current.contains(event.target)
-            ) {
-                setOpenMenu(null);
-            }
-
-        };
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener(
-                "mousedown",
-                handleClickOutside
-            );
-        };
-
-    }, []);
 
     if (loading) {
 
@@ -197,7 +173,7 @@ export default function NewsTable({
 
                                 {/* Title */}
 
-                                <td className="px-5 py-2 w-[350px]">
+                                <td className="px-5 py-2 w-[300px]">
 
                                     <div className="font-semibold text-gray-800 line-clamp-1">
 
@@ -211,7 +187,7 @@ export default function NewsTable({
 
                                 <td className="px-5 py-2">
 
-                                    <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+                                    <span className="rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700 line-clamp-1">
 
                                         {item.category}
 
@@ -221,7 +197,7 @@ export default function NewsTable({
 
                                 {/* Description */}
 
-                                <td className="px-5 py-2 w-[450px]">
+                                <td className="px-5 py-2 w-[400px]">
 
                                     <div className="line-clamp-1">
 
@@ -233,7 +209,7 @@ export default function NewsTable({
 
                                 {/* Date */}
 
-                                <td className="px-5 py-2">
+                                <td className="px-5 py-2 w-[150px]">
 
                                     {item.published_at
                                         ? new Date(item.published_at).toLocaleDateString("en-GB", {
@@ -249,7 +225,7 @@ export default function NewsTable({
 
                                 <td className="px-5 py-2">
 
-                                    <div ref={menuRef} className="relative flex justify-center">
+                                    <div className="relative flex justify-center">
 
                                         <button
                                             onClick={() =>

@@ -1,7 +1,9 @@
 import { useState } from "react";
-import bg from "../../assets/images/contact.jpg";
+import Header from "../components/header";
+import api from "../../api/api";
+import Swal from "sweetalert2";
 
-const ACCENT = "green";
+const ACCENT = "#059669";
 const ACCENT_SOFT = "#d4f0e6";
 
 const initialForm = {
@@ -83,47 +85,42 @@ function Field({ label, required, children }) {
 
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = () => {
-    alert("Message sent! We'll get back to you soon.");
-    setForm(initialForm);
-  };
+  const handleSubmit = async () => {
+    setLoading(true);
 
+    try {
+      await api.post("/contact", form);
+
+      Swal.fire({
+        icon: "success",
+        title: "Thank you!",
+        text: "Your message has been sent successfully.",
+      });
+
+      setForm(initialForm);
+
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops!",
+        text: "Unable to send your message.",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-gray-50">
 
       {/* Hero */}
-      <section className="relative h-[40vh] lg:h-[70vh] flex items-center overflow-hidden">
-        <img
-          src={bg}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/20" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 w-full">
-          <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md px-4 py-2 text-[10px] md:text-xs font-medium text-emerald-200 mb-2 md:mb-6">
-            Contact EHE Organization
-          </span>
-
-          <h1 className="max-w-4xl text-xl sm:text-3xl lg:text-5xl font-bold leading-tight text-white">
-            Let's Build a
-            <span className="block text-emerald-400">
-              Sustainable Future Together
-            </span>
-          </h1>
-
-          <p className="mt-2 md:mt-6 max-w-3xl text-sm md:text-base leading-6 md:leading-8 text-slate-200">
-            We'd love to hear from you. Whether you have questions, want to
-            collaborate, support our initiatives, or learn more about our work,
-            our team is ready to connect with you.
-          </p>
-        </div>
-      </section>
+      <Header />
 
       {/* Main content */}
       <section className="py-6 md:py-16 bg-white">
@@ -284,23 +281,57 @@ export default function Contact() {
 
               <button
                 onClick={handleSubmit}
-                className="w-full py-3 rounded-lg text-white cursor-pointer font-semibold text-sm transition-opacity hover:opacity-90 active:opacity-80 flex items-center justify-center gap-2"
+                disabled={loading}
+                className={`w-full py-3 rounded-lg text-white font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 ${loading
+                    ? "opacity-70 cursor-not-allowed"
+                    : "cursor-pointer hover:opacity-90 active:opacity-80"
+                  }`}
                 style={{ backgroundColor: ACCENT }}
               >
-                Send Message
-                <svg
-                  className="w-4 h-4 rotate-45"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                  />
-                </svg>
+                {loading ? (
+                  <>
+                    <svg
+                      className="w-5 h-5 animate-spin"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                      />
+                    </svg>
+
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send Message
+
+                    <svg
+                      className="w-4 h-4 rotate-45"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                      />
+                    </svg>
+                  </>
+                )}
               </button>
             </div>
 

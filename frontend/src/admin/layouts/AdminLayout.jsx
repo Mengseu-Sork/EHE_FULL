@@ -5,10 +5,12 @@ import {
     HomeIcon,
     ClockIcon,
     FolderIcon,
+    BookOpenIcon,
     NewspaperIcon,
     UserGroupIcon,
     PlayCircleIcon,
     RectangleGroupIcon,
+    DocumentDuplicateIcon,
     ArrowLeftOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 
@@ -56,6 +58,16 @@ export default function AdminLayout() {
             path: "/kh/admin/videos",
             icon: PlayCircleIcon,
         },
+        {
+            name: "Documents",
+            path: "/kh/admin/document",
+            icon: DocumentDuplicateIcon,
+        },
+        {
+            name: "Success Story",
+            path: "/kh/admin/stories",
+            icon: BookOpenIcon,
+        },
     ];
 
     return (
@@ -99,7 +111,7 @@ export default function AdminLayout() {
                 </div>
 
                 {/* Menu */}
-                <nav className="flex-1 p-4 space-y-2">
+                <nav className="flex-1 p-4 space-y-2 overflow-auto">
 
                     {menu.map((item) => {
                         const Icon = item.icon;

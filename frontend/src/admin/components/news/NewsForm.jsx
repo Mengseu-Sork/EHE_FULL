@@ -3,10 +3,12 @@ import Swal from "sweetalert2";
 import api from "../../../api/api";
 
 const CATEGORIES = [
-    "Education",
-    "Healthcare",
-    "Economic Development",
-    "Water & Sanitation",
+    "Community-Based Organizations",
+    "Sustainable Livelihoods",
+    "Natural Resource Management",
+    "Education & Community Health",
+    "Community Networks & Advocacy",
+    "Partnership & Policy Engagement",
 ];
 
 const today = new Date().toISOString().split("T")[0];
@@ -200,7 +202,7 @@ export default function NewsForm({
         }
 
     };
-    
+
     return (
 
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
@@ -238,11 +240,11 @@ export default function NewsForm({
 
                 <form onSubmit={submit}>
 
-                    <div className="grid gap-8 p-6 lg:grid-cols-3">
+                    <div className="grid gap-8 p-6 lg:grid-cols-5">
 
                         {/* Images */}
 
-                        <div>
+                        <div className="col-span-2">
 
                             <div className="mb-3 flex items-center justify-between">
 
@@ -366,7 +368,7 @@ export default function NewsForm({
 
                         {/* Form */}
 
-                        <div className="space-y-5 lg:col-span-2">
+                        <div className="space-y-5 lg:col-span-3">
 
                             <div>
 
@@ -387,9 +389,9 @@ export default function NewsForm({
 
                             </div>
 
-                            <div className="grid gap-5 md:grid-cols-2">
+                            <div className="grid gap-5 md:grid-cols-3">
 
-                                <div>
+                                <div className="col-span-2">
 
                                     <label className="mb-2 block font-medium">
 

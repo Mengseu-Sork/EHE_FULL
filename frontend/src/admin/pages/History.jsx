@@ -16,6 +16,9 @@ export default function HistoryAdmin() {
 
     const [viewItem, setViewItem] = useState(null);
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 6;
+
     const loadData = async () => {
         const res = await api.get("/histories");
         setHistories(res.data);
@@ -73,10 +76,20 @@ export default function HistoryAdmin() {
 
     };
 
+    const totalPages = Math.ceil(histories.length / itemsPerPage);
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+    const currentHistories = histories.slice(
+        indexOfFirstItem,
+        indexOfLastItem
+    );
+
     return (
         <div>
 
-            <div className="mb-6 flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:flex-row md:items-center md:justify-between">
+            <div className="mb-4 flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:flex-row md:items-center md:justify-between">
 
                 <div className="flex items-center gap-4">
 
@@ -85,7 +98,7 @@ export default function HistoryAdmin() {
                     </div>
 
                     <div>
-                        <h1 className="text-3xl font-bold text-green-800">
+                        <h1 className="text-2xl font-bold text-green-800">
                             History Management
                         </h1>
 
@@ -112,15 +125,54 @@ export default function HistoryAdmin() {
             <div className="bg-white rounded-2xl shadow">
 
                 <HistoryTable
-                    histories={histories}
+                    histories={currentHistories}
                     onView={(item) => setViewItem(item)}
                     onEdit={(item) => {
+                        console.log("Selected item:", item);
                         setEditing(item);
                         setShowForm(true);
                     }}
                     onDelete={deleteHistory}
                 />
 
+            </div>
+
+            <div className="bg-white flex items-center rounded-2xl justify-between px-6 py-2">
+                <p className="text-sm text-gray-500">
+                    Showing {indexOfFirstItem + 1}–
+                    {Math.min(indexOfLastItem, histories.length)} of {histories.length}
+                </p>
+
+                <div className="flex items-center gap-2">
+                    <button
+                        disabled={currentPage === 1}
+                        onClick={() => setCurrentPage((p) => p - 1)}
+                        className="rounded-lg border text-xs px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50 hover:bg-gray-100"
+                    >
+                        Previous
+                    </button>
+
+                    {Array.from({ length: totalPages }, (_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => setCurrentPage(i + 1)}
+                            className={`h-8 w-8 rounded-lg ${currentPage === i + 1
+                                    ? "bg-green-600 text-white"
+                                    : "border hover:bg-gray-100"
+                                }`}
+                        >
+                            {i + 1}
+                        </button>
+                    ))}
+
+                    <button
+                        disabled={currentPage === totalPages}
+                        onClick={() => setCurrentPage((p) => p + 1)}
+                        className="rounded-lg border text-xs px-3 py-2 disabled:cursor-not-allowed disabled:opacity-50 hover:bg-gray-100"
+                    >
+                        Next
+                    </button>
+                </div>
             </div>
 
             {showForm && (

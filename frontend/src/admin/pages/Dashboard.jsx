@@ -88,7 +88,7 @@ export default function Dashboard() {
             icon: VideoCameraIcon,
         },
         {
-            title: "News & Events",
+            title: "News",
             value: stats.news,
             bg: "bg-amber-100",
             text: "text-amber-600",
@@ -182,10 +182,10 @@ export default function Dashboard() {
 
                                 </div>
 
-                                <div className={`rounded-2xl p-4 ${card.bg}`}>
+                                <div className={`rounded-2xl p-2 ${card.bg}`}>
 
                                     <Icon
-                                        className={`h-8 w-8 ${card.text}`}
+                                        className={`h-6 w-6 ${card.text}`}
                                     />
 
                                 </div>
@@ -224,9 +224,9 @@ export default function Dashboard() {
 
                         </div>
 
-                        <div className="rounded-2xl bg-emerald-500 p-4 shadow-lg">
+                        <div className="rounded-2xl bg-emerald-500 p-2 shadow-lg">
 
-                            <EyeIcon className="h-8 w-8 text-white" />
+                            <EyeIcon className="h-6 w-6 text-white" />
 
                         </div>
 
@@ -254,9 +254,9 @@ export default function Dashboard() {
 
                         </div>
 
-                        <div className="rounded-2xl bg-blue-500 p-4 shadow-lg">
+                        <div className="rounded-2xl bg-blue-500 p-2 shadow-lg">
 
-                            <CalendarDaysIcon className="h-8 w-8 text-white" />
+                            <CalendarDaysIcon className="h-6 w-6 text-white" />
 
                         </div>
 
@@ -284,9 +284,9 @@ export default function Dashboard() {
 
                         </div>
 
-                        <div className="rounded-2xl bg-purple-500 p-4 shadow-lg">
+                        <div className="rounded-2xl bg-purple-500 p-2 shadow-lg">
 
-                            <ChartBarSquareIcon className="h-8 w-8 text-white" />
+                            <ChartBarSquareIcon className="h-6 w-6 text-white" />
 
                         </div>
 
@@ -314,9 +314,9 @@ export default function Dashboard() {
 
                         </div>
 
-                        <div className="rounded-2xl bg-orange-500 p-4 shadow-lg">
+                        <div className="rounded-2xl bg-orange-500 p-2 shadow-lg">
 
-                            <GlobeAltIcon className="h-8 w-8 text-white" />
+                            <GlobeAltIcon className="h-6 w-6 text-white" />
 
                         </div>
 

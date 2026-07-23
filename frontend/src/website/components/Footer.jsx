@@ -17,8 +17,9 @@ const menus = [
     { name: "Home", path: "/kh/home" },
     { name: "About Us", path: "/kh/about" },
     { name: "Our Programs", path: "/kh/programs" },
-    { name: "Our Projects", path: "/kh/projects" },
-    { name: "News & Events", path: "/kh/news" },
+    { name: "News", path: "/kh/news" },
+    { name: "Public Documents", path: "/kh/documents" },
+    { name: "Success Stories", path: "/kh/stories" },
     { name: "Videos", path: "/kh/videos" },
     { name: "Contact", path: "/kh/contact" },
 ];
@@ -47,9 +48,9 @@ import logo from "../../assets/images/logo.jpg";
 export default function Footer() {
     return (
         <footer className="bg-green-900 text-white">
-            <div className="max-w-full mx-auto px-8 lg:px-12 py-8 md:py-16">
+            <div className="max-w-full mx-auto px-8 lg:px-12 py-8 lg:py-16">
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
 
                     {/* Organization */}
                     <div>
@@ -84,7 +85,7 @@ export default function Footer() {
                             Quick Links
                         </h4>
 
-                        <ul className="grid grid-cols-3 md:grid-cols-2 gap-4 md:gap-6 text-xs md:text-sm">
+                        <ul className="grid grid-cols-2 gap-4 md:gap-6 text-xs md:text-sm">
                             {menus.map((menu) => (
                                 <li key={menu.path}>
                                     <NavLink
@@ -139,7 +140,7 @@ export default function Footer() {
                                         (+855) 12 673 634
                                     </span>
                                 </a>
-                                
+
                                 {/* Phone */}
                                 <a
                                     href="tel:+85516673634"

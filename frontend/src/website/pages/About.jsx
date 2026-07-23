@@ -1,9 +1,4 @@
-import ngoForumLogo from "../../assets/partner/logo.jpg";
-import undpLogo from "../../assets/partner/UNDP.jpg";
-import unicefLogo from "../../assets/partner/UNICEF.jpg";
-import ministryLogo from "../../assets/partner/Ministry.jpg";
-
-import bg from "../../assets/images/about/bg.jpg";
+import Header from "../components/header"
 import image from "../../assets/images/about/image.jpg";
 
 
@@ -22,21 +17,20 @@ export default function About() {
 
     const approach = [
         {
-            title: "Vision & Purpose",
-            description: "We strive for a society where the Cambodian people live with dignity in a healthy and sustainable environment."
+            title: "Vision & Mission",
+            description:
+                "A society in which Cambodian people live with dignity in a healthy environment. We work closely with communities to strengthen their organizations, support community-led initiatives, and build strong grassroots networks for sustainable development and social justice.",
         },
         {
-            title: "Community-Led Mission",
-            description: "We work in close partnership with grassroots communities, actively supporting and empowering their local plans and initiatives."
+            title: "Core Values",
+            description:
+                "Transparency, Respect, Solidarity, Environmental Stewardship, and Justice guide every partnership, decision, and action we take.",
         },
         {
-            title: "Integrity & Justice",
-            description: "We operate with total transparency and accountability toward our board, partners, and donors while relentlessly fighting for social equality."
+            title: "Strategic Goal",
+            description:
+                "Empower grassroots communities and indigenous peoples to protect their land and natural resources, strengthen collective leadership, and achieve self-reliant and sustainable economic development.",
         },
-        {
-            title: "Environmental & Mutual Respect",
-            description: "We value biodiversity, forests, and local cultures, fostering deep mutual respect for human rights and the natural world within our teams."
-        }
     ];
 
     const [history, setHistory] = useState([]);
@@ -127,7 +121,7 @@ export default function About() {
             `}</style>
 
             {/* Hero */}
-            <section
+            {/* <section
                 className="relative h-[40vh] lg:h-[70vh] flex items-center justify-start bg-cover bg-center"
                 style={{ backgroundImage: `url(${bg})` }}
             >
@@ -154,7 +148,8 @@ export default function About() {
 
                     </div>
                 </div>
-            </section>
+            </section> */}
+            <Header />
 
             {/* Who We Are */}
             <section className="py-12 ehe-sans bg-gray-50">
@@ -175,52 +170,54 @@ export default function About() {
                             </span>
 
                             <h2
-                                className="ehe-serif mt-2 md:mt-4 text-lg md:text-3xl text-green-700 font-bold"
+                                className="ehe-serif mt-2 md:mt-4 text-lg md:text-2xl text-green-700 font-bold"
                             >
-                                Rooted in the communities we serve
+                                Empowering Communities for a Sustainable Future
                             </h2>
 
                             <p className="mt-3 md:mt-6 leading-6 text-sm md:text-base text-[#3F4A44] text-justify">
-                                Established in 2007, Environment and Health Education Organization (EHE)
-
-                                is a Cambodian non-governmental organization dedicated to empowering
-
-                                communities and promoting sustainable development.
+                                Established in 2007, Environment and Health Education (EHE)
+                                is a Cambodian non-governmental organization committed to
+                                empowering grassroots communities and indigenous peoples to
+                                protect their rights, strengthen community leadership, and
+                                promote sustainable development.
                             </p>
 
                             <p className="mt-2 md:mt-4 leading-6 text-sm md:text-base text-[#3F4A44] text-justify">
-                                EHE works closely with local communities, civil society networks,
-
-                                and development partners to protect natural resources, strengthen
-
-                                community participation, improve health and education, and support
-
-                                equitable and sustainable livelihoods.
+                                Working alongside local communities, civil society
+                                organizations, and development partners, EHE supports
+                                community-led initiatives that improve natural resource
+                                management, sustainable livelihoods, health, education, and
+                                social justice. Through collaboration and local ownership,
+                                we help communities build resilience and create lasting
+                                positive change.
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Approach Section */}
-            <section className="py-8 md:py-16 relative overflow-hidden bg-[#e7ffed]">
+            {/* Section */}
+            <section className="md:px-4 py-8 md:py-16 relative overflow-hidden bg-[#e7ffed]">
                 <div className="max-w-full mx-auto px-6">
 
-                    <div className="text-center max-w-3xl mx-auto">
+                    <div className="text-center max-w-4xl mx-auto">
                         <span className="uppercase tracking-[0.2em] text-xs md:text-sm text-green-700 font-semibold">
-                            Our Core Foundations
+                            About EHE
                         </span>
 
                         <h2 className="ehe-serif text-lg md:text-3xl mt-4 text-green-950 font-bold">
-                            Vision, Mission & Values
+                            Vision, Mission, Core Values & Strategic Goal
                         </h2>
 
-                        <p className="mt-4 md:mt-6 text-sm md:text-base leading-6 md:leading-8 text-gray-600">
-                            The strategic pillars and moral principles that guide EHE's daily operations, community engagements, and advocacy efforts across Cambodia.
+                        <p className="mt-3 md:mt-6 text-sm md:text-base leading-6 md:leading-8 text-gray-600">
+                            Our vision, mission, core values, and strategic goal define who we are,
+                            guide our work, and shape our commitment to empowering communities and
+                            promoting sustainable development across Cambodia.
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-6 md:mt-16">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 mt-6 md:mt-16">
                         {approach.map((item, index) => (
                             <div
                                 key={index}
@@ -382,67 +379,219 @@ export default function About() {
 
             </section>
 
-            {/* Partners */}
+            {/* Donors & Supporters */}
             <section className="py-8 md:py-16 bg-gradient-to-b from-white to-green-50 relative overflow-hidden">
                 {/* Background decoration */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-green-100 rounded-full blur-3xl opacity-50" />
                 <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-100 rounded-full blur-3xl opacity-50" />
 
                 <div className="relative max-w-full mx-auto px-6">
-                    <div className="text-center max-w-3xl mx-auto">
+                    <div className="text-center max-w-4xl mx-auto">
                         <span className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-xs md:text-sm font-semibold uppercase tracking-wider">
-                            Collaboration
+                            Donors & Supporters
                         </span>
 
                         <h2 className="ehe-serif text-lg md:text-3xl mt-3 md:mt-6 text-green-950">
-                            Partners & Supporters
+                            Our Donors & Supporters
                         </h2>
 
                         <p className="mt-3 md:mt-6 text-sm md:text-base leading-6 md:leading-8 text-gray-600">
-                            Together with development partners, government agencies,
-                            NGOs, and local communities, we create sustainable solutions
-                            for health, education, and environmental protection.
+                            We are grateful to our donors and supporters whose generous contributions
+                            strengthen our mission to empower communities, protect natural resources,
+                            improve livelihoods, and promote sustainable development across Cambodia.
                         </p>
                     </div>
 
                     {/* Partner Cards */}
-                    <div className="relative overflow-hidden mt-8 md:mt-16">
+                    <div className="relative overflow-hidden max-w-4xl mx-auto mt-8 md:mt-16">
                         <div className="flex cursor-pointer animate-marquee gap-6 md:gap-8">
-                            {[...partners, ...partners].map((partner, index) => (
-                                <div
-                                    key={`${partner.id}-${index}`}
-                                    className="flex flex-shrink-0 items-center justify-center"
-                                >
+                            {[...partners, ...partners]
+                                .filter((partner) => partner.category === "Donor")
+                                .map((partner, index) => (
+                                    <div
+                                        key={`${partner.id}-${index}`}
+                                        className="flex flex-shrink-0 items-center justify-center"
+                                    >
 
-                                    {partner.website ? (
+                                        {partner.website ? (
 
-                                        <a
-                                            href={partner.website}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
+                                            <a
+                                                href={partner.website}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+
+                                                <img
+                                                    src={partner.logo}
+                                                    alt={partner.name}
+                                                    className="h-14 object-contain transition duration-300 hover:scale-105 md:h-24"
+                                                />
+
+                                            </a>
+
+                                        ) : (
 
                                             <img
                                                 src={partner.logo}
                                                 alt={partner.name}
-                                                className="h-12 object-contain transition duration-300 hover:scale-105 md:h-20"
+                                                className="h-14 object-contain transition duration-300 hover:scale-105 md:h-24"
                                             />
 
-                                        </a>
+                                        )}
 
-                                    ) : (
+                                    </div>
 
-                                        <img
-                                            src={partner.logo}
-                                            alt={partner.name}
-                                            className="h-12 object-contain transition duration-300 hover:scale-105 md:h-20"
-                                        />
+                                ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                                    )}
+            {/* Partnerships */}
+            <section className="py-8 md:py-16 bg-gradient-to-b from-white to-green-50 relative overflow-hidden">
+                {/* Background decoration */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-green-100 rounded-full blur-3xl opacity-50" />
+                <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-100 rounded-full blur-3xl opacity-50" />
 
-                                </div>
+                <div className="relative max-w-full mx-auto px-6">
+                    <div className="text-center max-w-4xl mx-auto">
+                        <span className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-xs md:text-sm font-semibold uppercase tracking-wider">
+                            Partnerships
+                        </span>
 
-                            ))}
+                        <h2 className="ehe-serif text-lg md:text-3xl mt-3 md:mt-6 text-green-950">
+                            Our Partners
+                        </h2>
+
+                        <p className="mt-3 md:mt-6 text-sm md:text-base leading-6 md:leading-8 text-gray-600">
+                            We collaborate with local communities, civil society organizations,
+                            government institutions, development agencies, and international partners
+                            to advance environmental conservation, community empowerment, sustainable
+                            livelihoods, health, and education across Cambodia.
+                        </p>
+                    </div>
+
+                    {/* Partner Cards */}
+                    <div className="relative overflow-hidden max-w-4xl mx-auto mt-8 md:mt-16">
+                        <div className="flex cursor-pointer animate-marquee gap-6 md:gap-8">
+                            {[...partners, ...partners]
+                                .filter((partner) => partner.category === "Partner")
+                                .map((partner, index) => (
+                                    <div
+                                        key={`${partner.id}-${index}`}
+                                        className="flex flex-shrink-0 items-center flex-col text-center"
+                                    >
+
+                                        {partner.website ? (
+
+                                            <a
+                                                href={partner.website}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+
+                                                <img
+                                                    src={partner.logo}
+                                                    alt={partner.name}
+                                                    className="h-14 object-contain transition duration-300 hover:scale-105 md:h-24"
+                                                />
+
+                                            </a>
+
+                                        ) : (
+
+                                            <img
+                                                src={partner.logo}
+                                                alt={partner.name}
+                                                className="h-14 object-contain transition duration-300 hover:scale-105 md:h-24"
+                                            />
+
+                                        )}
+
+                                        {partner.description && (
+                                            <p className="mt-1 text-[7px] md:text-xs leading-5 text-slate-500">
+                                                {partner.description}
+                                            </p>
+                                        )}
+
+                                    </div>
+
+                                ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* NGO Networks */}
+            <section className="py-8 md:py-16 bg-gradient-to-b from-white to-green-50 relative overflow-hidden">
+                {/* Background decoration */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-green-100 rounded-full blur-3xl opacity-50" />
+                <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-100 rounded-full blur-3xl opacity-50" />
+
+                <div className="relative max-w-full mx-auto px-6">
+                    <div className="text-center max-w-4xl mx-auto">
+                        <span className="inline-block px-4 py-1 rounded-full bg-green-100 text-green-700 text-xs md:text-sm font-semibold uppercase tracking-wider">
+                            NGO Networks
+                        </span>
+
+                        <h2 className="ehe-serif text-lg md:text-3xl mt-3 md:mt-6 text-green-950">
+                            Our NGO Networks
+                        </h2>
+
+                        <p className="mt-3 md:mt-6 text-sm md:text-base leading-6 md:leading-8 text-gray-600">
+                            EHE actively collaborates with national and international NGO networks to
+                            promote community empowerment, environmental protection, human rights, and
+                            sustainable development across Cambodia.
+                        </p>
+                    </div>
+
+                    {/* NGO Networks */}
+                    <div className="relative overflow-hidden max-w-4xl mx-auto mt-8 md:mt-16">
+                        <div className="flex cursor-pointer animate-marquee gap-6 md:gap-10">
+                            {[...partners, ...partners]
+                                .filter((partner) => partner.category === "NGO Network")
+                                .map((partner, index) => (
+                                    <div
+                                        key={`${partner.id}-${index}`}
+                                        className="flex flex-shrink-0 items-center flex-col text-center"
+                                    >
+
+                                        {partner.website ? (
+
+                                            <a
+                                                href={partner.website}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+
+                                                <img
+                                                    src={partner.logo}
+                                                    alt={partner.name}
+                                                    className="h-14 object-contain transition duration-300 hover:scale-105 md:h-24"
+                                                />
+
+                                            </a>
+
+                                        ) : (
+
+                                            <img
+                                                src={partner.logo}
+                                                alt={partner.name}
+                                                className="h-14 object-contain transition duration-300 hover:scale-105 md:h-24"
+                                            />
+
+                                        )}
+
+                                        {partner.description && (
+                                            <p className="mt-1 text-[7px] md:text-xs leading-5 text-slate-500">
+                                                {partner.description}
+                                            </p>
+                                        )}
+
+                                    </div>
+
+                                ))}
+
                         </div>
                     </div>
                 </div>

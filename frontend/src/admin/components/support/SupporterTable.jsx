@@ -60,6 +60,8 @@ export default function SupporterTable({
                                 Supporter
                             </th>
 
+                            <th className="px-6 py-4 text-left">Category</th>
+
                             <th className="w-60 px-6 py-4 text-left">
                                 Website
                             </th>
@@ -139,6 +141,13 @@ export default function SupporterTable({
 
                                     </td>
 
+
+                                    <td>
+                                        <span className="rounded-full bg-green-100 px-6 py-3 text-xs font-medium text-left text-green-700">
+                                            {item.category}
+                                        </span>
+                                    </td>
+
                                     {/* Website */}
 
                                     <td className="px-6 py-3">
@@ -174,15 +183,15 @@ export default function SupporterTable({
 
                                         <span
                                             className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium ${item.is_active
-                                                    ? "bg-green-100 text-green-700"
-                                                    : "bg-red-100 text-red-700"
+                                                ? "bg-green-100 text-green-700"
+                                                : "bg-red-100 text-red-700"
                                                 }`}
                                         >
 
                                             <span
                                                 className={`h-2.5 w-2.5 rounded-full ${item.is_active
-                                                        ? "bg-green-600"
-                                                        : "bg-red-600"
+                                                    ? "bg-green-600"
+                                                    : "bg-red-600"
                                                     }`}
                                             />
 
@@ -232,7 +241,7 @@ export default function SupporterTable({
                                                         className="flex w-full items-center gap-3 px-4 py-3 text-gray-700 transition hover:bg-blue-50"
                                                     >
                                                         <FaEye className="text-blue-600" />
-                                                        
+
                                                     </button>
 
                                                     <button
@@ -243,7 +252,7 @@ export default function SupporterTable({
                                                         className="flex w-full items-center gap-3 px-4 py-3 text-gray-700 transition hover:bg-amber-50"
                                                     >
                                                         <FaEdit className="text-amber-600" />
-                                                        
+
                                                     </button>
 
                                                     <button
@@ -254,7 +263,7 @@ export default function SupporterTable({
                                                         className="flex w-full items-center gap-3 px-4 py-3 text-red-600 transition hover:bg-red-50"
                                                     >
                                                         <FaTrash />
-                                                       
+
                                                     </button>
 
                                                 </div>
